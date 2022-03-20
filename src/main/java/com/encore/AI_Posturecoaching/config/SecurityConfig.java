@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -42,8 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                     .authorizeRequests() // /와 /auth/** 경로는 인증 안해도 됨.
-                        .antMatchers("/api/signup","/api/signin").permitAll()
-                        .antMatchers("/api/members/**").authenticated()
+                        .antMatchers(HttpMethod.POST,"/api/signup","/api/signin").permitAll()
+                        .antMatchers(HttpMethod.GET,"/api/members/").permitAll()
+                        .antMatchers(HttpMethod.POST,"/api/members/**").authenticated()
+                        .antMatchers(HttpMethod.POST,"/api/categories/**").authenticated()
+                        .antMatchers(HttpMethod.PUT,"/api/categories/**").authenticated()
+                        .antMatchers(HttpMethod.DELETE,"/api/categories/**").authenticated()
                         .anyRequest() // /와 /auth/**이외의 모든 경로는 인증 해야됨.
                 .authenticated();
 
