@@ -3,6 +3,7 @@ package com.encore.AI_Posturecoaching.board.controller;
 
 import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.dto.BoardCreateRequestDto;
+import com.encore.AI_Posturecoaching.board.dto.BoardReadCondition;
 import com.encore.AI_Posturecoaching.board.dto.BoardUpdateRequestDto;
 import com.encore.AI_Posturecoaching.board.dto.BoardUpdateResponseDto;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
@@ -31,6 +32,12 @@ public class BoardController {
     private final BoardRepository boardRepository;
 
     // 게시글 목록 전체 조회
+    @ApiOperation(value = "게시글 전체 목록 조회", notes = "게시글 목록을 조회한다.")
+    @GetMapping("/api/board")
+    @ResponseStatus(HttpStatus.OK)
+    public Response readAll(@Valid BoardReadCondition cond) {
+        return Response.success(boardService.readAll(cond));
+    }
 
     // 게시글 조회
     @ApiOperation(value = "게시글 조회", notes = "게시글을 조회한다.")
@@ -48,8 +55,6 @@ public class BoardController {
     public Response create(@Valid @ModelAttribute BoardCreateRequestDto req) {
         return Response.success(boardService.create(req));
     }
-
-
 
     @ApiOperation(value = "게시글 수정", notes = "게시글을 수정한다.")
     @PutMapping("/api/board/{id}")

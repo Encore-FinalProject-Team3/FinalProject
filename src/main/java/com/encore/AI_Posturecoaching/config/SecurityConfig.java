@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers(HttpMethod.POST,"/api/categories/**").authenticated()
                         .antMatchers(HttpMethod.PUT,"/api/categories/**").authenticated()
                         .antMatchers(HttpMethod.DELETE,"/api/categories/**").authenticated()
-                        .antMatchers(HttpMethod.GET,"api/board/**").authenticated()
+                        .antMatchers(HttpMethod.GET,"api/board/**").permitAll()
                         .antMatchers(HttpMethod.POST,"api/board/**").authenticated()
                         .antMatchers(HttpMethod.PUT,"api/board/**").authenticated()
                         .antMatchers(HttpMethod.DELETE,"api/board/**").authenticated()

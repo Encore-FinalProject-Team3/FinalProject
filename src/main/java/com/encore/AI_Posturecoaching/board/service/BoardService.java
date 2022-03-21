@@ -36,6 +36,13 @@ public class BoardService {
     private final FileService fileService;
 
 
+    // 게시글 전체 조회
+    public BoardListDto readAll(BoardReadCondition cond) {
+        return BoardListDto.toDto(
+                boardRepository.findAllByCondition(cond)
+        );
+    }
+
     // 게시글 조회
     public BoardDto read(Long id) {
         return BoardDto.toDto(boardRepository.findById(id).orElseThrow(PostNotFoundException::new));
@@ -66,7 +73,7 @@ public class BoardService {
     @Transactional
 //    @PreAuthorize("@postGuard.check(#id)")
     public BoardUpdateResponseDto update(Long id, BoardUpdateRequestDto boardUpdateRequest) {
-        // 내가 쓴 글인지 파악해서 수정을 진행해야 함, 아직 구현 못함
+        // 내가 쓴 글인지 파악해서 수정을 진행해야 함. 아직 못함
         Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
         Board.ImageUpdatedResult result = board.update(boardUpdateRequest);
         uploadImages(result.getAddedImages(), result.getAddedImageFiles());

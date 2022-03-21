@@ -62,11 +62,18 @@ public class InitDB {
     }
 
     private void initBoard() {
-        Member member = memberRepository.findAll().get(0);
-        Category category = categoryRepository.findAll().get(0);
-        IntStream.range(0, 100)
+        Member member1 = memberRepository.findAll().get(0);
+        Category category1 = categoryRepository.findAll().get(0);
+        IntStream.range(0, 10)
                 .forEach(i -> boardRepository.save(
-                        new Board("title" + i, "content" + i, member, category, List.of())
+                        new Board("title" + i, "content" + i, member1, category1, List.of())
                 ));
+        Member member2 = memberRepository.findAll().get(1);
+        Category category2 = categoryRepository.findAll().get(1);
+        IntStream.range(0, 10)
+                .forEach(i -> boardRepository.save(
+                        new Board("title" + i, "content" + i, member2, category2, List.of())
+                ));
+
     }
 }
