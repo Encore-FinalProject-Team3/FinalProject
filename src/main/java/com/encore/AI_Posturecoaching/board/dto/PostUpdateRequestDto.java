@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.board;
+package com.encore.AI_Posturecoaching.board.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

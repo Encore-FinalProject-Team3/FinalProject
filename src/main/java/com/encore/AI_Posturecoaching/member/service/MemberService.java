@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public MemberDto read(Long id) {
+    public MemberDto findOne(Long id) {
         return MemberDto.toDto(memberRepository.findById(id).orElseThrow(MemberNotFoundException::new));
     }
 
@@ -29,7 +29,7 @@ public class MemberService {
         if(role == "ADMIN"){
             memberRepository.delete(member);
         }else{
-            throw new RuntimeException();
+            throw new RuntimeException("관리자만 삭제할 수 있습니다");
         }
     }
 

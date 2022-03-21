@@ -22,7 +22,7 @@ public class MemberController {
     @GetMapping("/api/members/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Response read(@ApiParam(value = "사용자 id", required = true) @PathVariable Long id) {
-        return Response.success(memberService.read(id));
+        return Response.success(memberService.findOne(id));
     }
 
 

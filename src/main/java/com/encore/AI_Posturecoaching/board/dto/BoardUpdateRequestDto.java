@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.board;
+package com.encore.AI_Posturecoaching.board.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardUpdateRequest {
+public class BoardUpdateRequestDto {
     @ApiModelProperty(value = "게시글 제목", notes = "게시글 제목을 입력해주세요", required = true, example = "my title")
     private String title;
 

@@ -43,7 +43,7 @@ public class InitDB {
 
     private void initTestMember() {
         memberRepository.save(
-                new Member("member1@member2.com", passwordEncoder.encode("1234"), "member1", "MEMBER"));
+                new Member("member1@member1.com", passwordEncoder.encode("1234"), "member1", "MEMBER"));
         memberRepository.save(
                 new Member("member2@member2.com", passwordEncoder.encode("1234"), "member2", "MEMBER"));
     }

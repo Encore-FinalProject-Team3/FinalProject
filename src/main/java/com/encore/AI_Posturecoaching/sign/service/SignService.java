@@ -25,14 +25,13 @@ public class SignService {
     @Transactional
     public void signUp(final SignUpRequestDto signUpRequestDto) {
         if(signUpRequestDto == null || signUpRequestDto.getEmail() == null ) {
-            throw new RuntimeException("Invalid arguments");
+            throw new RuntimeException("허가되지 않은 값이 들어왔습니다.");
         }
         if(memberRepository.existsByEmail(signUpRequestDto.getEmail())) {
-            log.warn("Email already exists");
-            throw new RuntimeException("Email already exists");
+            throw new RuntimeException("이메일이 이미 존재합니다.");
         }
         String encodedPassword = passwordEncoder.encode(signUpRequestDto.getPassword());
-        String role = "USER";
+        String role = "MEMBER";
         memberRepository.save(
                 new Member(signUpRequestDto.getEmail(), encodedPassword, signUpRequestDto.getMemberName(),role)
         );

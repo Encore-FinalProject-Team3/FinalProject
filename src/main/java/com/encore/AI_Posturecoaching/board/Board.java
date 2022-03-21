@@ -1,10 +1,8 @@
 package com.encore.AI_Posturecoaching.board;
 
 
+import com.encore.AI_Posturecoaching.board.dto.BoardUpdateRequestDto;
 import com.encore.AI_Posturecoaching.category.Category;
-import com.encore.AI_Posturecoaching.comment.Comment;
-import com.encore.AI_Posturecoaching.file.File;
-import com.encore.AI_Posturecoaching.like.Like;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -12,7 +10,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +65,7 @@ public class Board {
         addImages(images);
     }
 
-    public ImageUpdatedResult update(BoardUpdateRequest req) {
+    public ImageUpdatedResult update(BoardUpdateRequestDto req) {
         this.title = req.getTitle();
         this.content = req.getContent();
         ImageUpdatedResult result = findImageUpdatedResult(req.getAddedImages(), req.getDeletedImages());

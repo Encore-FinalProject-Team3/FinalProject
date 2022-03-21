@@ -44,8 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .authorizeRequests() // /와 /auth/** 경로는 인증 안해도 됨.
                         .antMatchers(HttpMethod.POST,"/api/signup","/api/signin").permitAll()
-                        .antMatchers(HttpMethod.GET,"/api/**").permitAll()
-                        .antMatchers(HttpMethod.GET,"/api/members/").permitAll()
+                        .antMatchers(HttpMethod.GET,"/api/members/").authenticated()
                         .antMatchers(HttpMethod.POST,"/api/members/**").authenticated()
                         .antMatchers(HttpMethod.POST,"/api/categories/**").authenticated()
                         .antMatchers(HttpMethod.PUT,"/api/categories/**").authenticated()
