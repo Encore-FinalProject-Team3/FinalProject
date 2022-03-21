@@ -1,8 +1,13 @@
 package com.encore.AI_Posturecoaching.board.controller;
 
 
+import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.dto.BoardCreateRequestDto;
+import com.encore.AI_Posturecoaching.board.dto.BoardUpdateRequestDto;
+import com.encore.AI_Posturecoaching.board.dto.BoardUpdateResponseDto;
+import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.board.service.BoardService;
+import com.encore.AI_Posturecoaching.exception.PostNotFoundException;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +15,8 @@ import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +28,7 @@ import javax.validation.Valid;
 public class BoardController {
 
     private final BoardService boardService;
+    private final BoardRepository boardRepository;
 
     // 게시글 목록 전체 조회
 
@@ -41,7 +49,16 @@ public class BoardController {
         return Response.success(boardService.create(req));
     }
 
-    // 게시글 수정
+
+
+    @ApiOperation(value = "게시글 수정", notes = "게시글을 수정한다.")
+    @PutMapping("/api/board/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Response update(
+            @ApiParam(value = "게시글 id", required = true) @PathVariable Long id,
+            @Valid @ModelAttribute BoardUpdateRequestDto boardUpdateRequestDto) {
+        return Response.success(boardService.update(id, boardUpdateRequestDto));
+    }
 
     // 게시글 삭제
     @ApiOperation(value = "게시글 삭제", notes = "게시글을 삭제한다.")
