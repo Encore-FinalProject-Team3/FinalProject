@@ -65,10 +65,10 @@ public class Board {
         addImages(images);
     }
 
-    public ImageUpdatedResult update(BoardUpdateRequestDto req) {
-        this.title = req.getTitle();
-        this.content = req.getContent();
-        ImageUpdatedResult result = findImageUpdatedResult(req.getAddedImages(), req.getDeletedImages());
+    public ImageUpdatedResult update(BoardUpdateRequestDto boardUpdateRequestDto) {
+        this.title = boardUpdateRequestDto.getTitle();
+        this.content = boardUpdateRequestDto.getContent();
+        ImageUpdatedResult result = findImageUpdatedResult(boardUpdateRequestDto.getAddedImages(), boardUpdateRequestDto.getDeletedImages());
         addImages(result.getAddedImages());
         deleteImages(result.getDeletedImages());
         return result;

@@ -24,6 +24,7 @@ public class MemberController {
     public Response read(@ApiParam(value = "사용자 id", required = true) @PathVariable Long id) {
         return Response.success(memberService.findOne(id));
     }
+    // => 자신이 멤버인경우만 데이터가 조회되야 하고 다른 사람 정보는 조회되면 안되는 문제 해결해야함
 
 
     // 사용자 전체 검색
