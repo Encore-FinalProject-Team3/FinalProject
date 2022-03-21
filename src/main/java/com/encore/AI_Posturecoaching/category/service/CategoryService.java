@@ -25,11 +25,11 @@ public class CategoryService {
     }
 
     @Transactional
-    public void create(CategoryCreateRequest req) {
-        Category parent = Optional.ofNullable(req.getParentId())
+    public void create(CategoryCreateRequest categoryCreateRequest) {
+        Category parent = Optional.ofNullable(categoryCreateRequest.getParentId())
                 .map(id -> categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new))
                 .orElse(null);
-        categoryRepository.save(new Category(req.getName(), parent));
+        categoryRepository.save(new Category(categoryCreateRequest.getName(), parent));
     }
 
     @Transactional

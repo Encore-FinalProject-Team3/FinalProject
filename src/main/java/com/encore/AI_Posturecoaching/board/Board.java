@@ -42,11 +42,6 @@ public class Board {
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
-//
-//    @Column(name = "board_member_name")
-//    private String memberNama;
-//
-//    private String memberId;
 
     @Column(name = "board_hit")
     private int hit;
