@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.category.ui;
+package com.encore.AI_Posturecoaching.category.controller;
 
 import com.encore.AI_Posturecoaching.category.CategoryCreateRequest;
 import com.encore.AI_Posturecoaching.category.service.CategoryService;

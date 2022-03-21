@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.member.ui;
+package com.encore.AI_Posturecoaching.member.controller;
 
 import com.encore.AI_Posturecoaching.member.service.MemberService;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;

@@ -1,5 +1,7 @@
 package com.encore.AI_Posturecoaching;
 
+import com.encore.AI_Posturecoaching.board.Board;
+import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
 import com.encore.AI_Posturecoaching.member.Member;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Component
 @RequiredArgsConstructor
@@ -22,6 +25,7 @@ public class InitDB {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryRepository;
+    private final BoardRepository boardRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
@@ -31,21 +35,19 @@ public class InitDB {
         initTestAdmin();
         initTestMember();
         initCategory();
-
-
-
+        initBoard();
     }
 
     private void initTestAdmin() {
         memberRepository.save(
-                new Member("ADMIN@ADMIN.com", passwordEncoder.encode("1234"), "ADMIN", "ADMIN"));
+                new Member("ADMIN@ADMIN.com", passwordEncoder.encode("123456!"), "ADMIN", "ADMIN"));
     }
 
     private void initTestMember() {
         memberRepository.save(
-                new Member("member1@member1.com", passwordEncoder.encode("1234"), "member1", "MEMBER"));
+                new Member("member1@member1.com", passwordEncoder.encode("123456!"), "member1", "MEMBER"));
         memberRepository.save(
-                new Member("member2@member2.com", passwordEncoder.encode("1234"), "member2", "MEMBER"));
+                new Member("member2@member2.com", passwordEncoder.encode("123456!"), "member2", "MEMBER"));
     }
 
     private void initCategory() {
@@ -57,5 +59,14 @@ public class InitDB {
         Category c6 = categoryRepository.save(new Category("질문", c3));
         Category c7 = categoryRepository.save(new Category("대답", c3));
         Category c8 = categoryRepository.save(new Category("테니스", null));
+    }
+
+    private void initBoard() {
+        Member member = memberRepository.findAll().get(0);
+        Category category = categoryRepository.findAll().get(0);
+        IntStream.range(0, 100)
+                .forEach(i -> boardRepository.save(
+                        new Board("title" + i, "content" + i, member, category, List.of())
+                ));
     }
 }

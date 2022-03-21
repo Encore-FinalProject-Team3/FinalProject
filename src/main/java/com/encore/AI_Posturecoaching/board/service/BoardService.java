@@ -2,17 +2,29 @@ package com.encore.AI_Posturecoaching.board.service;
 
 
 import com.encore.AI_Posturecoaching.board.Board;
-import com.encore.AI_Posturecoaching.board.dto.BoardListDto;
-import com.encore.AI_Posturecoaching.board.dto.BoardReadCondition;
+import com.encore.AI_Posturecoaching.board.Image;
+import com.encore.AI_Posturecoaching.board.dto.BoardCreateRequestDto;
+import com.encore.AI_Posturecoaching.board.dto.BoardCreateResponseDto;
+import com.encore.AI_Posturecoaching.board.dto.BoardDto;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
+import com.encore.AI_Posturecoaching.category.Category;
+import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
+import com.encore.AI_Posturecoaching.exception.CategoryNotFoundException;
+import com.encore.AI_Posturecoaching.exception.MemberNotFoundException;
+import com.encore.AI_Posturecoaching.exception.PostNotFoundException;
+import com.encore.AI_Posturecoaching.file.service.FileService;
+import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Slf4j
@@ -21,15 +33,33 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
     private final MemberRepository memberRepository;
-
-//    public BoardListDto readAll(BoardReadCondition cond) {
-//        return BoardListDto.toDto(
-//                boardRepository.findAllById();
-//        );
-//    }
+    private final CategoryRepository categoryRepository;
+    private final FileService fileService;
 
 
+    // 게시글 조회
+    public BoardDto read(Long id) {
+        return BoardDto.toDto(boardRepository.findById(id).orElseThrow(PostNotFoundException::new));
+    }
 
+    @Transactional
+    public BoardCreateResponseDto create(BoardCreateRequestDto boardCreateRequestDto){
+        Member member =memberRepository.findById(boardCreateRequestDto.getMemberId()).orElseThrow(MemberNotFoundException::new);
+        Category category = categoryRepository.findById(boardCreateRequestDto.getCategoryId()).orElseThrow(CategoryNotFoundException::new);
+        List<Image> images = boardCreateRequestDto.getImages().stream().map(i -> new Image(i.getOriginalFilename())).collect(toList());
+        Board board = boardRepository.save(
+                new Board(boardCreateRequestDto.getTitle(), boardCreateRequestDto.getContent(),member, category, images)
+        );
+        uploadImages(board.getImages(), boardCreateRequestDto.getImages());
+        return new BoardCreateResponseDto(board.getId());
+    }
+
+
+
+
+    private void uploadImages(List<Image> images, List<MultipartFile> fileImages) {
+        IntStream.range(0, images.size()).forEach(i -> fileService.upload(fileImages.get(i), images.get(i).getUniqueName()));
+    }
 
 
 

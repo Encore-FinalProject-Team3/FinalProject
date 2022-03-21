@@ -1,24 +1,18 @@
 package com.encore.AI_Posturecoaching.board.controller;
 
 
-import com.encore.AI_Posturecoaching.board.Board;
-import com.encore.AI_Posturecoaching.board.dto.BoardDto;
-import com.encore.AI_Posturecoaching.board.dto.BoardReadCondition;
+import com.encore.AI_Posturecoaching.board.dto.BoardCreateRequestDto;
 import com.encore.AI_Posturecoaching.board.service.BoardService;
-import com.encore.AI_Posturecoaching.member.dto.ResponseDto;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Api(value = "Board Controller", tags = "Board")
 @RestController
@@ -28,17 +22,24 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    // 게시글 전체 목록 조회
-//    @ApiOperation(value = "게시글 목록 조회", notes = "게시글 목록을 조회한다.")
-//    @GetMapping("/api/posts")
-//    @ResponseStatus(HttpStatus.OK)
-//    public Response readAll(@Valid BoardReadCondition cond) {
-//        return Response.success(boardService.readAll(cond));
-//    }
+    // 게시글 목록 전체 조회
 
-    // 게시글 목록 조회
+    // 게시글 조회
+    @ApiOperation(value = "게시글 조회", notes = "게시글을 조회한다.")
+    @GetMapping("/api/board/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Response read(@ApiParam(value = "게시글 id", required = true) @PathVariable Long id) {
+        return Response.success(boardService.read(id));
+    }
 
     // 게시글 생성
+    @ApiOperation(value = "게시글 생성", notes = "게시글을 생성한다.")
+    @PostMapping("/api/board")
+    @ResponseStatus(HttpStatus.CREATED)
+//    @AssignMemberId
+    public Response create(@Valid @ModelAttribute BoardCreateRequestDto req) {
+        return Response.success(boardService.create(req));
+    }
 
     // 게시글 삭제
 
