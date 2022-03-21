@@ -41,9 +41,16 @@ public class BoardController {
         return Response.success(boardService.create(req));
     }
 
-    // 게시글 삭제
-
     // 게시글 수정
+
+    // 게시글 삭제
+    @ApiOperation(value = "게시글 삭제", notes = "게시글을 삭제한다.")
+    @DeleteMapping("/api/board/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Response delete(@ApiParam(value = "게시글 id", required = true) @PathVariable Long id) {
+        boardService.delete(id);
+        return Response.success();
+    }
 
 
 

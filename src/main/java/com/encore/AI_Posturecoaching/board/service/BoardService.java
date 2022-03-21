@@ -3,9 +3,7 @@ package com.encore.AI_Posturecoaching.board.service;
 
 import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.Image;
-import com.encore.AI_Posturecoaching.board.dto.BoardCreateRequestDto;
-import com.encore.AI_Posturecoaching.board.dto.BoardCreateResponseDto;
-import com.encore.AI_Posturecoaching.board.dto.BoardDto;
+import com.encore.AI_Posturecoaching.board.dto.*;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
@@ -17,6 +15,7 @@ import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -54,11 +53,34 @@ public class BoardService {
         return new BoardCreateResponseDto(board.getId());
     }
 
+    @Transactional
+//    @PreAuthorize("@postGuard.check(#id)")
+    public void delete(Long id) {
+        // 내가 올린글인지 파악해서 지워야 하는데 아직 구현 못함
+        Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
+        deleteImages(board.getImages());
+        boardRepository.delete(board);
+    }
 
+
+    @Transactional
+//    @PreAuthorize("@postGuard.check(#id)")
+    public BoardUpdateResponseDto update(Long id, BoardUpdateRequestDto boardUpdateRequest) {
+        // 내가 쓴 글인지 파악해서 수정을 진행해야 함, 아직 구현 못함
+        Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
+        Board.ImageUpdatedResult result = board.update(boardUpdateRequest);
+        uploadImages(result.getAddedImages(), result.getAddedImageFiles());
+        deleteImages(result.getDeletedImages());
+        return new BoardUpdateResponseDto(id);
+    }
 
 
     private void uploadImages(List<Image> images, List<MultipartFile> fileImages) {
         IntStream.range(0, images.size()).forEach(i -> fileService.upload(fileImages.get(i), images.get(i).getUniqueName()));
+    }
+
+    private void deleteImages(List<Image> images) {
+        images.stream().forEach(i -> fileService.delete(i.getUniqueName()));
     }
 
 
