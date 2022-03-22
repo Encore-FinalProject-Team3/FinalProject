@@ -1,14 +1,13 @@
 package com.encore.AI_Posturecoaching.lecturer;
 
-
 import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,38 +19,50 @@ public class Coaching {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long coachingIdx;
+    @Column(name = "coaching_idx")
+    private Long id;
     //코칭내용
     @Lob
-    @Column(nullable = false)
-    private String coachingContent;
+    @Column(name = "coaching_content", nullable = false)
+    private String content;
     //코칭 등록
-    private int coachingRegister;
-    //코칭강사
-    private int coachingExpert;
+    @Column(name = "coaching_register")
+    private int register;
+    //신청맴버
+    @Column(name = "coaching_member_id")
+    private Long memberId;
     //신청일
     @CreationTimestamp
-    private Timestamp coachingRequestDate;
+    @Column(name = "coaching_request_date")
+    private Timestamp requestDate;
     //응답일
-    @CreationTimestamp
-    private Timestamp coachingResponseDate;
+    @LastModifiedDate
+    @Column(name = "coaching_response_date")
+    private Timestamp responseDate;
+
+    //파일 번호
+    @Column(name = "file_idx")
+    private Long fileIdx;
+
     //상태
-    private Boolean coachingStatus;
-    //리뷰번호
-    private Long reviewIdx;
+    @Column(name = "coaching_status")
+    private Boolean status;
+
+
 
     //강사 조인
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "expertIdx")
+    @JoinColumn(name = "expert_idx")
     private Expert expert;
+
     //일반유저
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberIdx")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     //파일
-    @OneToOne(mappedBy = "coaching")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="target_idx")
     private File file;
-
 
 }

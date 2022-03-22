@@ -1,4 +1,4 @@
-package com.encore.AI_Postureoaching.lecturer.ui;
+package com.encore.AI_Posturecoaching.lecturer.ui;
 
 public class ReviewController {
 }

@@ -40,7 +40,7 @@ public class MemberController {
 
     // 사용자 정보 수정
     @ApiOperation(value = "사용자 정보 수정", notes = "사용자 정보을 수정한다.")
-    @PutMapping("/api/members/{id}")
+    @PutMapping("/api/members/mypage/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Response update(
             @ApiParam(value = "사용자 id", required = true) @PathVariable Long id,

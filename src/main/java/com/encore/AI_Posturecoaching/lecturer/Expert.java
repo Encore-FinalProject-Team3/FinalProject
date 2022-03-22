@@ -18,15 +18,18 @@ import java.util.List;
 public class Expert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "expert_id")
     //강사번호
-    private Long expertIdx;
+    private Long id;
 
     //강사이름
     @Column(nullable = false,length = 45)
     private String expertName;
+
     //경력
     @Column(nullable = false,length = 200)
     private String expertCareer;
+
     //강사맴버아이디
     private  Long expertMemberId;
 
@@ -38,7 +41,5 @@ public class Expert {
     //코칭 정보
     @OneToMany(mappedBy = "expert")
     private List<Coaching> coachingList =new ArrayList<>();
-    //코칭 리뷰 정보
-    @OneToMany(mappedBy = "expert")
-    private List<Review> reviews =new ArrayList<>();
+
 }

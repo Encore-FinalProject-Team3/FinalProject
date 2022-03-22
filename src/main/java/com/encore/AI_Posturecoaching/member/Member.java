@@ -1,4 +1,5 @@
 package com.encore.AI_Posturecoaching.member;
+import com.encore.AI_Posturecoaching.lecturer.Expert;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -66,7 +67,8 @@ public class Member {
     @Column(name="member_active_point")
     private int activePoint;
 
-
+    @OneToOne(mappedBy = "member")
+    private Expert expert;
 
     public Member(String email, String password, String memberName, String role) {
         this.email = email;
