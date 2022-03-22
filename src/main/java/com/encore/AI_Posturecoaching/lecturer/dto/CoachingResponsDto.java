@@ -33,10 +33,7 @@ public class CoachingResponsDto {
 
 
     @Builder
-    public CoachingResponsDto(Long id
-            , String title
-            , String content
-            , Boolean status, Expert expert, Member member, File file) {
+    public CoachingResponsDto(Long id) {
         this.id = id;
         this.title = title;
         this.content = content;

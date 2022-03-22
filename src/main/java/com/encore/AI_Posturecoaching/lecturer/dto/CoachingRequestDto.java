@@ -1,6 +1,7 @@
 package com.encore.AI_Posturecoaching.lecturer.dto;
 
 
+import com.encore.AI_Posturecoaching.comment.Comment;
 import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.lecturer.Coaching;
 import com.encore.AI_Posturecoaching.lecturer.Expert;
@@ -27,6 +28,7 @@ public class CoachingRequestDto {
     //파일
     private File file;
 
+    private String comment;
 
     @Builder
     public CoachingRequestDto(Long id, String title, String content, Boolean status, Expert expert, Member member, File file, String comment) {
@@ -37,6 +39,10 @@ public class CoachingRequestDto {
         this.expert = expert;
         this.member = member;
         this.file = file;
+        this.comment=comment;
+    }
+
+    public CoachingRequestDto(Long id, String title, String content, Boolean status, Expert expert, Member member, File file, Comment comment) {
     }
 
     public static CoachingRequestDto ToDto(Coaching coaching) {
@@ -47,7 +53,8 @@ public class CoachingRequestDto {
                 ,coaching.getStatus()
                 ,coaching.getExpert()
                 ,coaching.getMember()
-                ,coaching.getFile());
+                ,coaching.getFile()
+                ,coaching.getComment());
 
     }
 }

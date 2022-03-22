@@ -61,9 +61,8 @@ public class BoardService {
     }
 
     @Transactional
-//    @PreAuthorize("@postGuard.check(#id)")
     public void delete(String memberId, Long id) {
-        // 내가 올린글인지 파악해서 지워야 하는데 아직 구현 못함
+
         Member member = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);
         Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
         if (board.getMember().getId() == Long.valueOf(memberId)|| member.getRole().equals("ADMIN")) {
@@ -76,9 +75,8 @@ public class BoardService {
 
 
     @Transactional
-//    @PreAuthorize("@postGuard.check(#id)")
     public BoardUpdateResponseDto update(String memberId, Long id, BoardUpdateRequestDto boardUpdateRequest) {
-        // 내가 쓴 글인지 파악해서 수정을 진행해야 함. 아직 못함
+
         Member member = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);
         Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
         if (board.getMember().getId() == Long.valueOf(memberId)|| member.getRole().equals("ADMIN")) {
