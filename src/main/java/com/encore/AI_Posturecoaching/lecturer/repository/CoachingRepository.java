@@ -14,4 +14,5 @@ public interface CoachingRepository extends JpaRepository<Coaching,Long> {
     List<Coaching> findAllByExpertId (Long id);
     //전체 리스트
     List<Coaching> findAll ();
+    //
 }

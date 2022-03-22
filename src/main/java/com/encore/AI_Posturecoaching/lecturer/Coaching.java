@@ -21,16 +21,13 @@ public class Coaching {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "coaching_idx")
     private Long id;
+    //코칭제목
+    @Column(name = "coaching_title")
+    private String title;
     //코칭내용
     @Lob
     @Column(name = "coaching_content", nullable = false)
     private String content;
-    //코칭 등록
-    @Column(name = "coaching_register")
-    private int register;
-    //신청맴버
-    @Column(name = "coaching_member_id")
-    private Long memberId;
     //신청일
     @CreationTimestamp
     @Column(name = "coaching_request_date")
@@ -40,6 +37,8 @@ public class Coaching {
     @Column(name = "coaching_response_date")
     private Timestamp responseDate;
 
+    @Column(name = "coaching_comment")
+    private  String comment;
     //파일 번호
     @Column(name = "file_idx")
     private Long fileIdx;
@@ -47,8 +46,6 @@ public class Coaching {
     //상태
     @Column(name = "coaching_status")
     private Boolean status;
-
-
 
     //강사 조인
     @ManyToOne(fetch = FetchType.LAZY)
@@ -64,5 +61,6 @@ public class Coaching {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="target_idx")
     private File file;
+
 
 }
