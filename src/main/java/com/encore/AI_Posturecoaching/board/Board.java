@@ -5,8 +5,11 @@ import com.encore.AI_Posturecoaching.board.dto.BoardUpdateRequestDto;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -36,8 +39,10 @@ public class Board {
     @Column(name = "board_content")
     private String content;
 
+    @CreatedDate
     private LocalDateTime createdAt;
 
+    @LastModifiedDate
     private LocalDateTime modifiedAt;
 
     @Column(name = "board_hit")

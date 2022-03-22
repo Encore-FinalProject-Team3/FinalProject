@@ -62,22 +62,32 @@ public class BoardService {
 
     @Transactional
 //    @PreAuthorize("@postGuard.check(#id)")
-    public void delete(Long id) {
+    public void delete(String memberId, Long id) {
         // 내가 올린글인지 파악해서 지워야 하는데 아직 구현 못함
+        Member member = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);
         Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
-        deleteImages(board.getImages());
-        boardRepository.delete(board);
+        if (board.getMember().getId() == Long.valueOf(memberId)|| member.getRole().equals("ADMIN")) {
+            deleteImages(board.getImages());
+            boardRepository.delete(board);
+        } else {
+            throw new RuntimeException("게시물 작성자가 다릅니다.");
+        }
     }
 
 
     @Transactional
 //    @PreAuthorize("@postGuard.check(#id)")
-    public BoardUpdateResponseDto update(Long id, BoardUpdateRequestDto boardUpdateRequest) {
+    public BoardUpdateResponseDto update(String memberId, Long id, BoardUpdateRequestDto boardUpdateRequest) {
         // 내가 쓴 글인지 파악해서 수정을 진행해야 함. 아직 못함
+        Member member = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);
         Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);
-        Board.ImageUpdatedResult result = board.update(boardUpdateRequest);
-        uploadImages(result.getAddedImages(), result.getAddedImageFiles());
-        deleteImages(result.getDeletedImages());
+        if (board.getMember().getId() == Long.valueOf(memberId)|| member.getRole().equals("ADMIN")) {
+            Board.ImageUpdatedResult result = board.update(boardUpdateRequest);
+            uploadImages(result.getAddedImages(), result.getAddedImageFiles());
+            deleteImages(result.getDeletedImages());
+        } else {
+            throw new RuntimeException("게시물 작성자가 다릅니다.");
+        }
         return new BoardUpdateResponseDto(id);
     }
 

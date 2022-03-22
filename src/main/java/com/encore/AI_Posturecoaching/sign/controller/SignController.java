@@ -42,4 +42,13 @@ public class SignController {
         return success(signService.signIn(signUpRequestDto));
     }
 
+    // 이메일 체크
+    @ApiOperation(value = "이메일 체크", notes = "이메일이 등록 되어 있는지 확인 한다.")
+    @PostMapping("/api/confirm")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Response confirm(@RequestBody SignUpRequestDto signUpRequestDto) {
+        signService.confirm(signUpRequestDto);
+        return success();
+    }
+
 }

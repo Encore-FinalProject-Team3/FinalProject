@@ -13,6 +13,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toSet;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder

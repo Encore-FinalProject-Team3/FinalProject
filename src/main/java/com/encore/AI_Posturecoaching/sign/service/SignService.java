@@ -48,5 +48,10 @@ public class SignService {
         return new SignInResponseDto(token);
     }
 
-
+    @Transactional
+    public void confirm(final SignUpRequestDto signUpRequestDto) {
+        if(!memberRepository.existsByEmail(signUpRequestDto.getEmail())) {
+            throw new RuntimeException("유저가 존재하지 않습니다");
+        }
+    }
 }

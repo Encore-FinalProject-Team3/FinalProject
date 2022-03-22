@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,16 +62,16 @@ public class BoardController {
     @ResponseStatus(HttpStatus.OK)
     public Response update(
             @ApiParam(value = "게시글 id", required = true) @PathVariable Long id,
-            @Valid @ModelAttribute BoardUpdateRequestDto boardUpdateRequestDto) {
-        return Response.success(boardService.update(id, boardUpdateRequestDto));
+            @Valid @ModelAttribute BoardUpdateRequestDto boardUpdateRequestDto, @AuthenticationPrincipal String memberId) {
+        return Response.success(boardService.update(memberId, id, boardUpdateRequestDto));
     }
 
     // 게시글 삭제
     @ApiOperation(value = "게시글 삭제", notes = "게시글을 삭제한다.")
     @DeleteMapping("/api/board/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Response delete(@ApiParam(value = "게시글 id", required = true) @PathVariable Long id) {
-        boardService.delete(id);
+    public Response delete(@ApiParam(value = "게시글 id", required = true) @PathVariable Long id, @AuthenticationPrincipal String memeberId) {
+        boardService.delete(memeberId, id);
         return Response.success();
     }
 
