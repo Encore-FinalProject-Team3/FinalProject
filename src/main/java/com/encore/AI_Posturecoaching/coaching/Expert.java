@@ -1,7 +1,7 @@
 package com.encore.AI_Posturecoaching.coaching;
 
 
-import com.encore.AI_Posturecoaching.category.Category;
+
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
 
@@ -22,20 +22,16 @@ public class Expert {
     //강사번호
     private Long id;
 
-    //카테고리 아이디
-    @Column(name = "category_id")
-    private Long cid;
-
     //강사이름
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false,length = 45)
     private String expertName;
 
     //경력
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false,length = 200)
     private String expertCareer;
 
     //강사맴버아이디
-    private Long expertMemberId;
+    private  Long expertMemberId;
 
     //일반 유저 조인
     @OneToOne(cascade = CascadeType.ALL)
@@ -44,6 +40,6 @@ public class Expert {
 
     //코칭 정보
     @OneToMany(mappedBy = "expert")
-    private List<Coaching> coachingList;
+    private List<Coaching> coachingList =new ArrayList<>();
 
 }

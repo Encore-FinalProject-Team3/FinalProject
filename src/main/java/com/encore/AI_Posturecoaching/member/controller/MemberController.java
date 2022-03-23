@@ -48,6 +48,9 @@ public class MemberController {
         return Response.success(memberService.update(memberId, id, memberUpdateRequestDto));
     }
 
+
+
+
     @ApiOperation(value = "사용자 정보 삭제", notes = "사용자 정보를 삭제한다.")
     @DeleteMapping("/api/members/{id}")
     @ResponseStatus(HttpStatus.OK)
