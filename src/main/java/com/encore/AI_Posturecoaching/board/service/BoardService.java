@@ -47,6 +47,12 @@ public class BoardService {
         return BoardDto.toDto(boardRepository.findById(id).orElseThrow(PostNotFoundException::new));
     }
 
+    // 카테고리별 게시글 조회
+    public List<BoardDto> readAllByCategoryId(Long id){
+        List<BoardDto> boardList = boardRepository.findAllByCategoryId(id).stream().map(b -> BoardDto.toDto(b)).collect(toList());
+        return boardList;
+    }
+
     @Transactional
     public BoardCreateResponseDto create(BoardCreateRequestDto boardCreateRequestDto){
         Member member =memberRepository.findById(boardCreateRequestDto.getMemberId()).orElseThrow(MemberNotFoundException::new);

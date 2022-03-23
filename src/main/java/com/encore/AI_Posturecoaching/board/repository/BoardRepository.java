@@ -12,4 +12,7 @@ import java.util.Optional;
 public interface BoardRepository extends JpaRepository<Board,Long> ,CustomBoardRepository{
     @Query("select p from Board p join fetch p.member where p.id = :id")
     Optional<Board> findByIdWithMember(@Param("id") Long id);
+
+    @Query("select b from Board b where b.category = :id")
+    List<Board> findAllByCategoryId(@Param("id") Long id);
 }

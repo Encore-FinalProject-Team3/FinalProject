@@ -55,6 +55,5 @@ public class CoachingRequestDto {
                 ,coaching.getMember()
                 ,coaching.getFile()
                 ,coaching.getComment());
-
     }
 }
