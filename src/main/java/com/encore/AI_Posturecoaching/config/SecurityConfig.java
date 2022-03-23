@@ -1,8 +1,8 @@
-package com.encore.AI_Posturecoaching.coaching.service.config;
+package com.encore.AI_Posturecoaching.config;
 
 
 
-import com.encore.AI_Posturecoaching.coaching.service.config.jwt.JwtAuthenticationFilter;
+import com.encore.AI_Posturecoaching.config.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
