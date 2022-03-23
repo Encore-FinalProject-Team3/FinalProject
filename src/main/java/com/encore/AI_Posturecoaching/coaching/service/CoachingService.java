@@ -24,7 +24,7 @@ public class CoachingService {
     private final CoachingRepository coachingRepository;
     private final MemberRepository memberRepository;
 
-    //코칭 신청 (List)
+    //코칭 목록 (List)
     @Transactional
     public List<CoachingResponsDto> findList() {
         List<CoachingResponsDto> coachingAll = coachingRepository.findAll().stream()
@@ -32,7 +32,7 @@ public class CoachingService {
         return coachingAll;
     }
 
-    //코칭 신청 (get)
+    //코칭 한건 (get)
     @Transactional
     public CoachingRequestDto findOne(Long id) {
         return CoachingRequestDto.ToDto(coachingRepository.findById(id).orElseThrow(CoachingNotFoundException::new));
@@ -54,5 +54,13 @@ public class CoachingService {
         }
         return new CoachingResponsDto(useMember.getId());
     }
+
+    //코칭 신청
+//    @Transactional
+//    public CoachingResponsDto create(CoachingRequestDto coachingRequestDto){
+//        Member member = memberRepository.findById(coachingRequestDto.getId()).orElseThrow(CoachingNotFoundException::new);
+//        Coaching coaching = coachingRepository.save(new Coaching(coachingRequestDto.getTitle(),coachingRequestDto.getComment()
+//                ,coachingRequestDto.getContent(),false,coachingRequestDto.getExpert(),coachingRequestDto.getMember(),coachingRequestDto.getFile()));
+//    }
 
 }

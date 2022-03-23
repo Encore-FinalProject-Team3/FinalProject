@@ -62,5 +62,4 @@ public class Coaching {
     @JoinColumn(name="target_idx")
     private File file;
 
-
 }
