@@ -17,7 +17,7 @@ public class BoardCreateRequestFactory {
     }
 
     public static BoardCreateRequestDto createPostCreateRequest(String title, String content, Long memberId, Long categoryId, List<MultipartFile> images) {
-        return new BoardCreateRequestDto(title, content, memberId, categoryId, images);
+        return new BoardCreateRequestDto("test1", "content1", memberId, categoryId, images);
     }
 
 
