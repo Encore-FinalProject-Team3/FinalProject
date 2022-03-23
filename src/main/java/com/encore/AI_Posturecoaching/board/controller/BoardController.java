@@ -36,8 +36,8 @@ public class BoardController {
     @ApiOperation(value = "게시글 전체 목록 조회", notes = "게시글 목록을 조회한다.")
     @GetMapping("/api/board")
     @ResponseStatus(HttpStatus.OK)
-    public Response readAll(@Valid BoardReadCondition cond) {
-        return Response.success(boardService.readAll(cond));
+    public Response readAll() {
+        return Response.success(boardService.readAll());
     }
 
     // 게시글 조회

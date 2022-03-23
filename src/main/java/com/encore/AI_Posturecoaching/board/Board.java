@@ -13,6 +13,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +41,10 @@ public class Board {
     private String content;
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    private Timestamp createdAt;
 
     @LastModifiedDate
-    private LocalDateTime modifiedAt;
+    private Timestamp modifiedAt;
 
     @Column(name = "board_hit")
     private int hit;
