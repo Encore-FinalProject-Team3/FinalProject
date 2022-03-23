@@ -1,7 +1,6 @@
 package com.encore.AI_Posturecoaching.category;
 
 
-import com.encore.AI_Posturecoaching.coaching.Expert;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -10,8 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category {
 
@@ -26,6 +23,12 @@ public class Category {
     @JoinColumn(name = "parent_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category parent;
+
+    public Category(String name, Category parent) {
+        this.name = name;
+        this.parent = parent;
+    }
+
 
 
 }

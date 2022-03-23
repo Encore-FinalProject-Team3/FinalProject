@@ -24,7 +24,6 @@ public class CoachingService {
     private final CoachingRepository coachingRepository;
     private final MemberRepository memberRepository;
 
-
     //코칭 목록 (List)
     @Transactional
     public List<CoachingResponsDto> findList() {
@@ -38,7 +37,6 @@ public class CoachingService {
     public CoachingRequestDto findOne(Long id) {
         return CoachingRequestDto.ToDto(coachingRepository.findById(id).orElseThrow(CoachingNotFoundException::new));
     }
-
     //코칭 수정
     @Transactional
     public CoachingResponsDto update(String memberId, Long id, CoachingRequestDto coachingRequestDto) {
@@ -58,19 +56,11 @@ public class CoachingService {
     }
 
     //코칭 신청
-    @Transactional
-    public CoachingResponsDto create(CoachingRequestDto coachingRequestDto) {
-        Member member = memberRepository.findById(coachingRequestDto.getId()).orElseThrow(CoachingNotFoundException::new);
-
-        Coaching coaching = coachingRepository.save(Coaching.builder().title(coachingRequestDto.getTitle())
-                .content(coachingRequestDto.getContent())
-                .comment(coachingRequestDto.getComment())
-                .status(false).expert(coachingRequestDto.getExpert())
-                .member(coachingRequestDto.getMember())
-                .file(coachingRequestDto.getFile())
-                .build());
-
-        return new CoachingResponsDto(coaching);
-    }
+//    @Transactional
+//    public CoachingResponsDto create(CoachingRequestDto coachingRequestDto){
+//        Member member = memberRepository.findById(coachingRequestDto.getId()).orElseThrow(CoachingNotFoundException::new);
+//        Coaching coaching = coachingRepository.save(new Coaching(coachingRequestDto.getTitle(),coachingRequestDto.getComment()
+//                ,coachingRequestDto.getContent(),false,coachingRequestDto.getExpert(),coachingRequestDto.getMember(),coachingRequestDto.getFile()));
+//    }
 
 }
