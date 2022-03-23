@@ -37,10 +37,9 @@ public class BoardService {
 
 
     // 게시글 전체 조회
-    public BoardListDto readAll(BoardReadCondition cond) {
-        return BoardListDto.toDto(
-                boardRepository.findAllByCondition(cond)
-        );
+    public List<BoardDto> readAll() {
+        List<BoardDto> boardList = boardRepository.findAll().stream().map(b -> BoardDto.toDto(b)).collect(toList());
+        return boardList;
     }
 
     // 게시글 조회

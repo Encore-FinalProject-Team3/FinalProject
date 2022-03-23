@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -65,7 +66,7 @@ class BoardServiceTest {
         given(boardRepository.findAllByCondition(any())).willReturn(Page.empty());
 
         //when
-        BoardListDto boardListDto = boardService.readAll(createPostReadCondition(1,1));
+        List<BoardDto> boardList = boardService.readAll();
 
         //then
         assertThat(boardListDto.getPostList().size()).isZero(); //실제 값이 0인지 확인
