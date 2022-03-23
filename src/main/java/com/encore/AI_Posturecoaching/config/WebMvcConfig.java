@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.coaching.service.config;
+package com.encore.AI_Posturecoaching.config;
 
 
 import org.springframework.context.annotation.Configuration;

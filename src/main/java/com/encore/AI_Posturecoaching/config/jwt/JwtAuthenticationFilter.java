@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.coaching.service.config.jwt;
+package com.encore.AI_Posturecoaching.config.jwt;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
