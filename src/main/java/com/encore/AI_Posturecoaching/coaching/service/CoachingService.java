@@ -56,11 +56,19 @@ public class CoachingService {
     }
 
     //코칭 신청
-//    @Transactional
-//    public CoachingResponsDto create(CoachingRequestDto coachingRequestDto){
-//        Member member = memberRepository.findById(coachingRequestDto.getId()).orElseThrow(CoachingNotFoundException::new);
-//        Coaching coaching = coachingRepository.save(new Coaching(coachingRequestDto.getTitle(),coachingRequestDto.getComment()
-//                ,coachingRequestDto.getContent(),false,coachingRequestDto.getExpert(),coachingRequestDto.getMember(),coachingRequestDto.getFile()));
-//    }
+    @Transactional
+    public CoachingResponsDto create(CoachingRequestDto coachingRequestDto){
+        Member member = memberRepository.findById(coachingRequestDto.getId()).orElseThrow(CoachingNotFoundException::new);
+
+        Coaching coaching = coachingRepository.save(Coaching.builder().title(coachingRequestDto.getTitle())
+                .content(coachingRequestDto.getContent())
+                .comment(coachingRequestDto.getComment())
+                .status(false).expert(coachingRequestDto.getExpert())
+                .member(coachingRequestDto.getMember())
+                .file(coachingRequestDto.getFile())
+                .build());
+
+        return new CoachingResponsDto(coaching);
+    }
 
 }
