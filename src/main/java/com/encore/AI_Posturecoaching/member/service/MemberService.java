@@ -27,6 +27,11 @@ public class MemberService {
         return MemberDto.toDto(memberRepository.findById(id).orElseThrow(MemberNotFoundException::new));
     }
 
+    public List<MemberDto> findAll() {
+        List<MemberDto> memberList = memberRepository.findAll().stream().map(m -> MemberDto.toDto(m)).collect(Collectors.toList());
+        return memberList;
+    }
+
     @Transactional
     public MemberUpdateResponseDto update(String memberId, Long id, MemberUpdateRequestDto memberUpdateRequestDto) {
         Member useMember = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);

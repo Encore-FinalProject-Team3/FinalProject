@@ -75,11 +75,6 @@ public class BoardController {
         return Response.success();
     }
 
-
-
-
-
-
     /*@PostMapping
     public ResponseEntity<?> createBoard(
             @AuthenticationPrincipal String memberId,

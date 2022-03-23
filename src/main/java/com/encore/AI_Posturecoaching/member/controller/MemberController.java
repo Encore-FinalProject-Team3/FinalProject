@@ -33,10 +33,15 @@ public class MemberController {
     public Response read(@ApiParam(value = "사용자 id", required = true) @PathVariable Long id) {
         return Response.success(memberService.findOne(id));
     }
-    // => 자신이 멤버인경우만 데이터가 조회되야 하고 다른 사람 정보는 조회되면 안되는 문제 해결해야함
-
 
     // 사용자 전체 검색
+    @ApiOperation(value = "사용자 정보 전체 조회", notes = "사용자 전체 정보를 조회한다.")
+    @GetMapping("/api/members")
+    @ResponseStatus(HttpStatus.OK)
+    public Response readAll(){
+        return Response.success(memberService.findAll());
+    }
+
 
     // 사용자 정보 수정
     @ApiOperation(value = "사용자 정보 수정", notes = "사용자 정보을 수정한다.")
