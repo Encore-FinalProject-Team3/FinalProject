@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.lecturer.ui;
+package com.encore.AI_Posturecoaching.coaching.ui;
 
 
 import lombok.RequiredArgsConstructor;

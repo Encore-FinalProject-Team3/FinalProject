@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.config.jwt;
+package com.encore.AI_Posturecoaching.coaching.service.config.jwt;
 
 import com.encore.AI_Posturecoaching.member.Member;
 import io.jsonwebtoken.Claims;

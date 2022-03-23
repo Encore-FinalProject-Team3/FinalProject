@@ -1,9 +1,9 @@
-package com.encore.AI_Posturecoaching.lecturer.dto;
+package com.encore.AI_Posturecoaching.coaching.dto;
 
 
 import com.encore.AI_Posturecoaching.file.File;
-import com.encore.AI_Posturecoaching.lecturer.Coaching;
-import com.encore.AI_Posturecoaching.lecturer.Expert;
+import com.encore.AI_Posturecoaching.coaching.Coaching;
+import com.encore.AI_Posturecoaching.coaching.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

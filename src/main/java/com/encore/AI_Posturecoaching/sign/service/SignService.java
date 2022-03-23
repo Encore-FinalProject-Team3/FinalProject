@@ -1,6 +1,6 @@
 package com.encore.AI_Posturecoaching.sign.service;
 
-import com.encore.AI_Posturecoaching.config.jwt.TokenProvider;
+import com.encore.AI_Posturecoaching.coaching.service.config.jwt.TokenProvider;
 import com.encore.AI_Posturecoaching.exception.LoginFailureException;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.sign.dto.SignInResponseDto;

@@ -1,8 +1,8 @@
-package com.encore.AI_Posturecoaching.lecturer.controller;
+package com.encore.AI_Posturecoaching.coaching.controller;
 
 
-import com.encore.AI_Posturecoaching.lecturer.dto.CoachingRequestDto;
-import com.encore.AI_Posturecoaching.lecturer.service.CoachingService;
+import com.encore.AI_Posturecoaching.coaching.dto.CoachingRequestDto;
+import com.encore.AI_Posturecoaching.coaching.service.CoachingService;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -40,6 +40,24 @@ public class CoachingController {
     @PutMapping("/api/coaching/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Response update(
+            @ApiParam(value = "코칭 id", required = true) @PathVariable Long id,
+            @Valid @ModelAttribute CoachingRequestDto coachingRequestDto, @AuthenticationPrincipal String memberId) {
+        return Response.success(coachingService.update(memberId, id, coachingRequestDto));
+    }
+    //코칭 신청
+    @ApiOperation(value = "코칭 신청", notes = "코칭을 신청한다.")
+    @PostMapping("/api/coaching")
+    @ResponseStatus(HttpStatus.OK)
+    public Response adds (
+            @ApiParam(value = "코칭 id", required = true) @PathVariable Long id,
+            @Valid @ModelAttribute CoachingRequestDto coachingRequestDto, @AuthenticationPrincipal String memberId) {
+        return Response.success(coachingService.update(memberId, id, coachingRequestDto));
+    }
+    //특정 코칭 신청
+    @ApiOperation(value = "특정 코칭 신청", notes = "특정 코칭을 신청한다.")
+    @PostMapping("/api/coaching/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Response add (
             @ApiParam(value = "코칭 id", required = true) @PathVariable Long id,
             @Valid @ModelAttribute CoachingRequestDto coachingRequestDto, @AuthenticationPrincipal String memberId) {
         return Response.success(coachingService.update(memberId, id, coachingRequestDto));

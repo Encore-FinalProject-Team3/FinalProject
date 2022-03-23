@@ -1,4 +1,4 @@
-package com.encore.AI_Posturecoaching.lecturer;
+package com.encore.AI_Posturecoaching.coaching;
 
 import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.member.Member;

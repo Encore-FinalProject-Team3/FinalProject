@@ -2,7 +2,7 @@ package com.encore.AI_Posturecoaching.file;
 
 
 import com.encore.AI_Posturecoaching.board.Board;
-import com.encore.AI_Posturecoaching.lecturer.Coaching;
+import com.encore.AI_Posturecoaching.coaching.Coaching;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
 

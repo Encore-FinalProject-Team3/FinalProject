@@ -1,17 +1,11 @@
 package com.encore.AI_Posturecoaching.member;
-import com.encore.AI_Posturecoaching.lecturer.Expert;
+import com.encore.AI_Posturecoaching.coaching.Expert;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.util.stream.Collectors.toSet;
 
 @Getter
 @Setter

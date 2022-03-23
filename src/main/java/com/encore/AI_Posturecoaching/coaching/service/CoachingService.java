@@ -1,12 +1,12 @@
-package com.encore.AI_Posturecoaching.lecturer.service;
+package com.encore.AI_Posturecoaching.coaching.service;
 
 
 import com.encore.AI_Posturecoaching.exception.CoachingNotFoundException;
 import com.encore.AI_Posturecoaching.exception.MemberNotFoundException;
-import com.encore.AI_Posturecoaching.lecturer.Coaching;
-import com.encore.AI_Posturecoaching.lecturer.dto.CoachingResponsDto;
-import com.encore.AI_Posturecoaching.lecturer.dto.CoachingRequestDto;
-import com.encore.AI_Posturecoaching.lecturer.repository.CoachingRepository;
+import com.encore.AI_Posturecoaching.coaching.Coaching;
+import com.encore.AI_Posturecoaching.coaching.dto.CoachingResponsDto;
+import com.encore.AI_Posturecoaching.coaching.dto.CoachingRequestDto;
+import com.encore.AI_Posturecoaching.coaching.repository.CoachingRepository;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

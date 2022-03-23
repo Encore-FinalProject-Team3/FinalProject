@@ -1,6 +1,6 @@
-package com.encore.AI_Posturecoaching.lecturer.repository;
+package com.encore.AI_Posturecoaching.coaching.repository;
 
-import com.encore.AI_Posturecoaching.lecturer.Coaching;
+import com.encore.AI_Posturecoaching.coaching.Coaching;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
