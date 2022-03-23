@@ -2,6 +2,7 @@ package com.encore.AI_Posturecoaching.coaching;
 
 
 
+import com.encore.AI_Posturecoaching.expert.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
 
@@ -27,7 +28,7 @@ public class Review {
     //강사번호
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "expertId")
-    private  Expert expert;
+    private Expert expert;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memberIdx")

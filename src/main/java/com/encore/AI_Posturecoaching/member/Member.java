@@ -1,5 +1,5 @@
 package com.encore.AI_Posturecoaching.member;
-import com.encore.AI_Posturecoaching.coaching.Expert;
+import com.encore.AI_Posturecoaching.expert.Expert;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
