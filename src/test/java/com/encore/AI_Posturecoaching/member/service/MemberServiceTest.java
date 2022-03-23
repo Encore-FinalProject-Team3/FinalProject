@@ -49,7 +49,7 @@ class MemberServiceTest {
         //given
         given(memberRepository.findById(anyLong())).willReturn(Optional.of(createMember()));
         //when
-        memberService.delete(1l);
+        memberService.delete("1",1L);
         //then
         verify(memberRepository).delete(any());
     }
@@ -61,7 +61,7 @@ class MemberServiceTest {
         //when
 
         Exception e = assertThrows(Exception.class,
-                () -> memberService.delete(1L));//예외가 발생해야 한다.
+                () -> memberService.delete("1",1L));//예외가 발생해야 한다.
         System.out.println(e.getMessage());
 
         //then
