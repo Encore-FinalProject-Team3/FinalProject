@@ -4,6 +4,8 @@ import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
+import com.encore.AI_Posturecoaching.expert.Expert;
+import com.encore.AI_Posturecoaching.expert.repository.ExpertRepository;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,7 @@ public class InitDB {
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryRepository;
     private final BoardRepository boardRepository;
+    private final ExpertRepository expertRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
@@ -47,16 +50,19 @@ public class InitDB {
     private void initTestMember() {
         IntStream.range(0,20)
                         .forEach(i -> memberRepository.save(
-                                new Member("member"+i+"@"+"member"+i+".com"
+                                new Member("member"+i+"@"+"member.com"
                                         , passwordEncoder.encode("123456!"),
                                         "member"+i
                                         , "MEMBER")));
 
-        for (int i = 0; i < 20; i++) {
-            Member member = new Member("member1"+i+"@member"+i+".com"
+        for (int i = 21; i < 40; i++) {
+            Member member = new Member("member1"+i+"@member.com"
                     , passwordEncoder.encode("123456!")
                     ,"member1"+i,"EXPERT");
             memberRepository.save(member);
+            int rnd = new Random().nextInt(1000);
+            Expert expert = new Expert(Long.valueOf(i+1),"용키"+rnd,"경력"+rnd,member);
+            expertRepository.save(expert);
         }
     }
 

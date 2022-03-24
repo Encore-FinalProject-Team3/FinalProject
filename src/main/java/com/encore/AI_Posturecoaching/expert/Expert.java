@@ -43,6 +43,11 @@ public class Expert {
     @OneToMany(mappedBy = "expert")
     private List<Coaching> coachingList;
 
-
+    public Expert(Long id,String expertName,String expertCareer,Member member){
+        this.id = id;
+        this.expertCareer = expertCareer;
+        this.expertName = expertName;
+        this.member = member;
+    }
 
 }
