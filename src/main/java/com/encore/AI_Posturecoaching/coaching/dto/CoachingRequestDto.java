@@ -6,11 +6,13 @@ import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.coaching.Coaching;
 import com.encore.AI_Posturecoaching.coaching.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class CoachingRequestDto {
     //코칭 아이디
@@ -30,17 +32,6 @@ public class CoachingRequestDto {
 
     private String comment;
 
-    @Builder
-    public CoachingRequestDto(Long id, String title, String content, Boolean status, Expert expert, Member member, File file, String comment) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.status = status;
-        this.expert = expert;
-        this.member = member;
-        this.file = file;
-        this.comment=comment;
-    }
 
     public CoachingRequestDto(Long id, String title, String content, Boolean status, Expert expert, Member member, File file, Comment comment) {
     }

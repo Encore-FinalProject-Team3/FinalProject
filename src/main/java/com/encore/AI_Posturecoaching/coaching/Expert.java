@@ -3,6 +3,7 @@ package com.encore.AI_Posturecoaching.coaching;
 
 
 import com.encore.AI_Posturecoaching.member.Member;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +14,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 public class Expert {
     @Id
@@ -30,16 +30,16 @@ public class Expert {
     @Column(nullable = false,length = 200)
     private String expertCareer;
 
-    //강사맴버아이디
-    private  Long expertMemberId;
-
     //일반 유저 조인
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "memberIdx")
+    @JoinColumn(name = "member_Id")
     private Member member;
 
     //코칭 정보
     @OneToMany(mappedBy = "expert")
-    private List<Coaching> coachingList =new ArrayList<>();
+    @JsonManagedReference
+    private List<Coaching> coachingList;
+
+
 
 }
