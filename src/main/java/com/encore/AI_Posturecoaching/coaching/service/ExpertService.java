@@ -32,11 +32,9 @@ public class ExpertService {
     }
 
     //강사 한건 가져오기
-    @Transactional
-    public ExpertRequestDto findOne(Long id) {
-
-        return ExpertRequestDto.ToDto(expertRepository.findById(id).orElseThrow(ExpertNotFoundException::new));
-
+    @Transactional(readOnly = true)
+    public Expert findOne(Long id) {
+        return expertRepository.findById(id).orElseThrow(()-> new IllegalArgumentException(id+"는 존재하지 않습니다."));
     }
 
     //강사 수정

@@ -46,19 +46,17 @@ public class Coaching {
     private Boolean status;
 
     //강사 조인
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "expert_id")
-    @JsonBackReference
     private Expert expert;
 
     //일반유저
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
     //파일
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="target_id")
     private File file;
 
 }
