@@ -14,21 +14,13 @@
 
 <br />
 
-### :key:Data source: Undefined
-
-
-<br />
-
-### :wrench: Used  Languages and Tools: 
-
-
-<br />
-<br />
-
-### :mag_right: Used Modules :nut_and_bolt:
-
-<br />
-<br />
+### 🔑 Problem Definition and Purpose
+각종 운동관련 기초정보, 지식공유, 중고거래 등을 제공하는 종합 
+서비스의 부재로 여러가지 플랫폼을 이용해야 하는 불편함이 있어 모든 
+서비스를 하나로 합친 통합적 웹 플랫폼을 제공한다. 추가적으로 영상 
+분석을 통해 AI를 활용한 자세 교정 및 전문가의 코칭 서비스를 
+제공하여온라인에서도 정확하고 올바른 자세교정이 가능하도록 서비스를 
+차별화하였다
 
 ### :two_men_holding_hands: Team 3: 
 
@@ -40,10 +32,10 @@
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
 *  <img 
-          src="https://img.shields.io/badge/Jaeyeon-PM, BE ,DB-blue"/>
-          <a href="https://www.instagram.com/raehyeon._.a/?hl=ko">
+          src="https://img.shields.io/badge/Yongki-PM, BE ,DB-blue"/>
+          <a href="https://www.instagram.com/yongki__cho/?hl=ko">
     <img 
-        src="http://img.shields.io/badge/-raehyeon._.a-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
+        src="http://img.shields.io/badge/-yongki___cho-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
 *  <img 
@@ -73,6 +65,41 @@
         src="http://img.shields.io/badge/-yeji6_5-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
+
+### 📆 Project Schedule
+![image](https://user-images.githubusercontent.com/92202707/159969738-ebf3ec85-b7cf-4d2f-b3b9-2e14e2d4a30e.png)
+<br />
+
+### :wrench: Used  Languages and Tools: 
+ - Java, HTML, CSS, Javascript
+    - Java (ver) : JDK 11
+- IDEA 
+    - intelliJ(Ultimate + Community),
+    - VSCode
+- Framework : Spring Boot + JPA + React
+- DB : MySQL
+- 협업
+    - Notion
+    - Slack
+    - Git(GitHub)
+
+
+<br />
+<br />
+
+### :mag_right: Design structure :nut_and_bolt:
+![image](https://user-images.githubusercontent.com/92202707/159971078-d7ff859f-a8e7-42eb-ae4d-3fa21e110b5b.png)
+
+<br />
+<br />
+
+
+
+### Database Structure
+
+![image](https://user-images.githubusercontent.com/92202707/159972983-34067c09-3c20-452e-9a3c-19848c6f69b2.png)
+
+
 
 
 
