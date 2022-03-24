@@ -15,4 +15,7 @@ public interface BoardRepository extends JpaRepository<Board,Long> ,CustomBoardR
 
     @Query("select b from Board b join fetch b.category c where c.id = :id")
     List<Board> findAllByCategoryId(@Param("id") Long id);
+
+    @Query("select b from Board b join fetch b.member m where m.id = :id")
+    List<Board> findAllByMemberId(@Param("id") Long id);
 }
