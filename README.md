@@ -67,7 +67,7 @@
         src="http://img.shields.io/badge/-xi_kyun-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-* Yeji <img 
+* <img 
           src="https://img.shields.io/badge/Yeji-BE,DB-green"/> <a href="https://www.instagram.com/yeji6_5/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-yeji6_5-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
