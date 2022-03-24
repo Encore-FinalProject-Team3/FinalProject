@@ -44,6 +44,7 @@ public class CoachingController {
             @Valid @ModelAttribute CoachingRequestDto coachingRequestDto, @AuthenticationPrincipal String memberId) {
         return Response.success(coachingService.update(memberId, id, coachingRequestDto));
     }
+
     //코칭 신청
     @ApiOperation(value = "코칭 신청", notes = "코칭을 신청한다.")
     @PostMapping("/api/coaching")

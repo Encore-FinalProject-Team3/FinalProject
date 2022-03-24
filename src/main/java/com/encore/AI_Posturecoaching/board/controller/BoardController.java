@@ -56,6 +56,12 @@ public class BoardController {
         return Response.success(boardService.readAllByCategoryId(id));
     }
 
+    // 멤버별 작성글 가져오기
+    @GetMapping("/api/board/member/{id}")
+    public Response readAllByMemberId(@ApiParam(value = "멤버 id",required = true) @PathVariable Long id) {
+        return Response.success(boardService.readAllByMemberId(id));
+    }
+
     // 게시글 생성
     @ApiOperation(value = "게시글 생성", notes = "게시글을 생성한다.")
     @PostMapping("/api/board")
@@ -82,6 +88,9 @@ public class BoardController {
         boardService.delete(memeberId, id);
         return Response.success();
     }
+
+
+
 
 
 }
