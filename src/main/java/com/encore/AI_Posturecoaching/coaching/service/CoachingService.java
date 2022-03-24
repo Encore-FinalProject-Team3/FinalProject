@@ -41,16 +41,16 @@ public class CoachingService {
     @Transactional
     public CoachingResponsDto update(String memberId, Long id, CoachingRequestDto coachingRequestDto) {
         Member useMember = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);
-        if (useMember.getRole().equals("MANAGER") || useMember.getRole().equals("ADMIN")) {
+        if (useMember.getRole().equals("EXPERT") || useMember.getRole().equals("ADMIN")) {
             final Optional<Coaching> original = coachingRepository.findById(id);
             original.ifPresent(newData -> {
-                newData.setStatus(coachingRequestDto.getStatus());
+                newData.setStatus(true);
                 newData.setComment(coachingRequestDto.getComment());
 
                 coachingRepository.save(newData);
             });
         } else {
-            throw new RuntimeException("관리자 또는 자신의 정보만 수정 가능합니다");
+            throw new RuntimeException("관리자 또는 강사님만 수정 가능합니다");
         }
         return new CoachingResponsDto(useMember.getId());
     }
