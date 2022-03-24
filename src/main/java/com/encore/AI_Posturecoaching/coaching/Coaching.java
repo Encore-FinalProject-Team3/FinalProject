@@ -1,8 +1,10 @@
 package com.encore.AI_Posturecoaching.coaching;
 
+import com.encore.AI_Posturecoaching.expert.Expert;
 import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.member.Member;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,6 +18,7 @@ import java.sql.Timestamp;
 @Setter
 @Builder
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Coaching {
 
     @Id
@@ -57,6 +60,7 @@ public class Coaching {
 
     //파일
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="file_id")
     private File file;
 
 }

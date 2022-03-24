@@ -4,14 +4,11 @@ package com.encore.AI_Posturecoaching.coaching.dto;
 import com.encore.AI_Posturecoaching.comment.Comment;
 import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.coaching.Coaching;
-import com.encore.AI_Posturecoaching.coaching.Expert;
+import com.encore.AI_Posturecoaching.expert.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CoachingRequestDto {

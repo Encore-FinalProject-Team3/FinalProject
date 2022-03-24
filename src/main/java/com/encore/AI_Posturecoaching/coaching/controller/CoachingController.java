@@ -49,18 +49,9 @@ public class CoachingController {
     @PostMapping("/api/coaching")
     @ResponseStatus(HttpStatus.OK)
     public Response adds (
-            @ApiParam(value = "코칭 id", required = true) @PathVariable Long id,
-            @Valid @ModelAttribute CoachingRequestDto coachingRequestDto, @AuthenticationPrincipal String memberId) {
-        return Response.success(coachingService.update(memberId, id, coachingRequestDto));
-    }
-    //특정 코칭 신청
-    @ApiOperation(value = "특정 코칭 신청", notes = "특정 코칭을 신청한다.")
-    @PostMapping("/api/coaching/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Response add (
-            @ApiParam(value = "코칭 id", required = true) @PathVariable Long id,
-            @Valid @ModelAttribute CoachingRequestDto coachingRequestDto, @AuthenticationPrincipal String memberId) {
-        return Response.success(coachingService.update(memberId, id, coachingRequestDto));
+            @Valid @ModelAttribute CoachingRequestDto coachingRequestDto) {
+        coachingService.create(coachingRequestDto);
+        return Response.success();
     }
 
 }

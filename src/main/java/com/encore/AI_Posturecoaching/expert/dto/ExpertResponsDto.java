@@ -1,12 +1,11 @@
-package com.encore.AI_Posturecoaching.coaching.dto;
+package com.encore.AI_Posturecoaching.expert.dto;
 
 
 import com.encore.AI_Posturecoaching.coaching.Coaching;
-import com.encore.AI_Posturecoaching.coaching.Expert;
+import com.encore.AI_Posturecoaching.expert.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data

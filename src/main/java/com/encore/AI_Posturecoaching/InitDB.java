@@ -4,7 +4,6 @@ import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
-import com.encore.AI_Posturecoaching.coaching.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,9 +53,9 @@ public class InitDB {
                                         , "MEMBER")));
 
         for (int i = 0; i < 20; i++) {
-            Member member = new Member("member"+i+"@member"+i+".com"
+            Member member = new Member("member1"+i+"@member"+i+".com"
                     , passwordEncoder.encode("123456!")
-                    ,"member"+i,"EXPERT");
+                    ,"member1"+i,"EXPERT");
             memberRepository.save(member);
         }
     }
