@@ -25,7 +25,7 @@
 ### :two_men_holding_hands: Team 3: 
 
 * <img 
-          src="https://img.shields.io/badge/Yaryung-BE,DBA-blue"/>
+          src="https://img.shields.io/badge/Yaryung-BE,DBA-green"/>
           <a href="https://www.instagram.com/difud1106/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-difud1106-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
