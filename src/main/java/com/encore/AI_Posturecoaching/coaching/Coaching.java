@@ -2,6 +2,7 @@ package com.encore.AI_Posturecoaching.coaching;
 
 import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.member.Member;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -19,7 +20,7 @@ public class Coaching {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "coaching_idx")
+    @Column(name = "coaching_id")
     private Long id;
     //코칭제목
     @Column(name = "coaching_title")
@@ -39,9 +40,6 @@ public class Coaching {
 
     @Column(name = "coaching_comment")
     private  String comment;
-    //파일 번호
-    @Column(name = "file_idx")
-    private Long fileIdx;
 
     //상태
     @Column(name = "coaching_status")
@@ -49,7 +47,8 @@ public class Coaching {
 
     //강사 조인
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "expert_idx")
+    @JoinColumn(name = "expert_id")
+    @JsonBackReference
     private Expert expert;
 
     //일반유저
@@ -59,7 +58,7 @@ public class Coaching {
 
     //파일
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="target_idx")
+    @JoinColumn(name="target_id")
     private File file;
 
 }

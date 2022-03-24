@@ -54,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers(HttpMethod.POST,"api/board/**").authenticated()
                         .antMatchers(HttpMethod.PUT,"api/board/**").authenticated()
                         .antMatchers(HttpMethod.DELETE,"api/board/**").authenticated()
+                        .antMatchers(HttpMethod.GET,"/api/expert/**").permitAll()
 
                         .anyRequest() // /와 /auth/**이외의 모든 경로는 인증 해야됨.
                 .authenticated();

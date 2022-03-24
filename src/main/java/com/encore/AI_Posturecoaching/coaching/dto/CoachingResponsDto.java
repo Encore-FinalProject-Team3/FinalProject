@@ -32,18 +32,10 @@ public class CoachingResponsDto {
     private String comment;
 
 
-    @Builder
-    public CoachingResponsDto(Long id) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.status = status;
-        this.expert = expert;
-        this.member = member;
-        this.file = file;
+    public CoachingResponsDto(Coaching coaching) {
     }
 
-    public CoachingResponsDto(Coaching coaching) {
+    public CoachingResponsDto(Long id) {
     }
 
     public static CoachingResponsDto ToDto(Coaching coaching) {

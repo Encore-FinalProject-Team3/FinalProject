@@ -55,12 +55,5 @@ public class CoachingService {
         return new CoachingResponsDto(useMember.getId());
     }
 
-    //코칭 신청
-//    @Transactional
-//    public CoachingResponsDto create(CoachingRequestDto coachingRequestDto){
-//        Member member = memberRepository.findById(coachingRequestDto.getId()).orElseThrow(CoachingNotFoundException::new);
-//        Coaching coaching = coachingRepository.save(new Coaching(coachingRequestDto.getTitle(),coachingRequestDto.getComment()
-//                ,coachingRequestDto.getContent(),false,coachingRequestDto.getExpert(),coachingRequestDto.getMember(),coachingRequestDto.getFile()));
-//    }
 
 }
