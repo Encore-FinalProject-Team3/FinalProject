@@ -3,7 +3,9 @@ package com.encore.AI_Posturecoaching.coaching;
 
 
 import com.encore.AI_Posturecoaching.member.Member;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,6 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 public class Expert {
     @Id
@@ -37,7 +40,6 @@ public class Expert {
 
     //코칭 정보
     @OneToMany(mappedBy = "expert")
-    @JsonManagedReference
     private List<Coaching> coachingList;
 
 
