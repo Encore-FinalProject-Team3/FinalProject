@@ -4,7 +4,6 @@ package com.encore.AI_Posturecoaching.coaching.service;
 import com.encore.AI_Posturecoaching.coaching.Expert;
 import com.encore.AI_Posturecoaching.coaching.dto.ExpertRequestDto;
 import com.encore.AI_Posturecoaching.coaching.repository.ExpertRepository;
-import com.encore.AI_Posturecoaching.exception.ExpertNotFoundException;
 import com.encore.AI_Posturecoaching.exception.MemberNotFoundException;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -25,10 +23,8 @@ public class ExpertService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public List<ExpertRequestDto> findAll() {
-        List<ExpertRequestDto> expertAll = expertRepository.findAll().stream()
-                .map(ExpertRequestDto::new).collect(Collectors.toList());
-        return expertAll;
+    public List<Expert> findAll() {
+        return expertRepository.findAll();
     }
 
     //강사 한건 가져오기
