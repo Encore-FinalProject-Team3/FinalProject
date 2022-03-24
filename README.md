@@ -13,6 +13,8 @@
 ### :microphone:Subject: Implementation of bulletin board function through JPA
 
 <br />
+<br />
+<br />
 
 ### 🔑 Problem Definition and Purpose
 각종 운동관련 기초정보, 지식공유, 중고거래 등을 제공하는 종합 
@@ -21,6 +23,9 @@
 분석을 통해 AI를 활용한 자세 교정 및 전문가의 코칭 서비스를 
 제공하여온라인에서도 정확하고 올바른 자세교정이 가능하도록 서비스를 
 차별화하였다
+
+<br />
+<br />
 
 ### :two_men_holding_hands: Team 3: 
 
@@ -65,7 +70,8 @@
         src="http://img.shields.io/badge/-yeji6_5-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-
+<br />
+<br />
 ### :wrench: Used  Languages and Tools: 
  - Java, HTML, CSS, Javascript
     - Java (ver) : JDK 11
@@ -83,6 +89,10 @@
 <br />
 <br />
 
+### 💻 System structure
+![그림1](https://user-images.githubusercontent.com/92202707/159981326-91965090-176e-4698-93bb-4a00f333a34a.png)
+<br />
+<br />
 ### :mag_right: Design structure 
 ![image](https://user-images.githubusercontent.com/92202707/159971078-d7ff859f-a8e7-42eb-ae4d-3fa21e110b5b.png)
 
