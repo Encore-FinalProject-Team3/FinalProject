@@ -1,6 +1,7 @@
 package com.encore.AI_Posturecoaching.coaching.service;
 
 
+import com.encore.AI_Posturecoaching.coaching.dto.CoachingExpertResponsDto;
 import com.encore.AI_Posturecoaching.exception.CoachingNotFoundException;
 import com.encore.AI_Posturecoaching.exception.MemberNotFoundException;
 import com.encore.AI_Posturecoaching.coaching.Coaching;
@@ -65,6 +66,21 @@ public class CoachingService {
                 .status(false)
                 .expert(coachingRequestDto.getExpert())
                 .member(coachingRequestDto.getMember()).build());
+    }
+
+
+    @Transactional
+    public List<CoachingResponsDto> readAllByMember(Long id) {
+        List<CoachingResponsDto> coachingAll = coachingRepository.findAllByMemberId(id).stream()
+                .map(CoachingResponsDto::new).collect(Collectors.toList());
+        return coachingAll;
+    }
+
+    @Transactional
+    public List<CoachingExpertResponsDto> readAllByExpert(Long id) {
+        List<CoachingExpertResponsDto> coachingAll = coachingRepository.findAllByExpertId(id).stream()
+                .map(CoachingExpertResponsDto::new).collect(Collectors.toList());
+        return coachingAll;
     }
 
 }
