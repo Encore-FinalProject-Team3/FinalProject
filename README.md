@@ -83,7 +83,7 @@
 <br />
 <br />
 
-### :mag_right: Design structure :nut_and_bolt:
+### :mag_right: Design structure 
 ![image](https://user-images.githubusercontent.com/92202707/159971078-d7ff859f-a8e7-42eb-ae4d-3fa21e110b5b.png)
 
 <br />
@@ -91,7 +91,7 @@
 
 
 
-### Database Structure
+### :nut_and_bolt: Database Structure
 
 ![image](https://user-images.githubusercontent.com/92202707/159972983-34067c09-3c20-452e-9a3c-19848c6f69b2.png)
 
