@@ -55,4 +55,20 @@ public class CoachingController {
         return Response.success();
     }
 
+    // 유저의 코칭 리스트 조회
+    @ApiOperation(value = "유저 코칭 리스트 조회", notes = "한 유저에 대한 코칭 정보를 조회한다.")
+    @GetMapping("/api/coaching/member/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Response readAllByMember(@ApiParam(value = "사용자 id", required = true) @PathVariable Long id) {
+        return Response.success(coachingService.readAllByMember(id));
+    }
+
+    // 강사의 코칭 리스트 조회
+    @ApiOperation(value = "강사 코칭 리스트 조회", notes = "한 강사에 대한 코칭 정보를 조회한다.")
+    @GetMapping("/api/coaching/expert/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Response readAllByExpert(@ApiParam(value = "사용자 id", required = true) @PathVariable Long id) {
+        return Response.success(coachingService.readAllByExpert(id));
+    }
+
 }

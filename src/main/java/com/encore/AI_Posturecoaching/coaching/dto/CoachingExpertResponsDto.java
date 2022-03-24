@@ -1,19 +1,15 @@
 package com.encore.AI_Posturecoaching.coaching.dto;
 
-
-import com.encore.AI_Posturecoaching.file.File;
 import com.encore.AI_Posturecoaching.coaching.Coaching;
-import com.encore.AI_Posturecoaching.expert.Expert;
-import com.encore.AI_Posturecoaching.member.Member;
+import com.encore.AI_Posturecoaching.file.File;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CoachingResponsDto {
+public class CoachingExpertResponsDto {
     //코칭 아이디
     private Long id;
     //제목
@@ -31,7 +27,7 @@ public class CoachingResponsDto {
 
     private String comment;
 
-    public CoachingResponsDto(Coaching coaching) {
+    public CoachingExpertResponsDto(Coaching coaching) {
         this.id = coaching.getId();
         this.title = coaching.getTitle();
         this.content = coaching.getContent();
@@ -42,11 +38,11 @@ public class CoachingResponsDto {
         this.comment = coaching.getComment();
     }
 
-    public CoachingResponsDto(Long id) {
+    public CoachingExpertResponsDto(Long id) {
     }
 
-    public static CoachingResponsDto ToDto(Coaching coaching) {
-        return new CoachingResponsDto
+    public static CoachingExpertResponsDto ToDto(Coaching coaching) {
+        return new CoachingExpertResponsDto
                 (coaching.getId()
                         , coaching.getTitle()
                         , coaching.getContent()
