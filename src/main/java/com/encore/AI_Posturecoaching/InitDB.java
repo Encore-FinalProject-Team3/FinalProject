@@ -4,6 +4,7 @@ import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
+import com.encore.AI_Posturecoaching.coaching.Expert;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 @Component
@@ -46,10 +48,17 @@ public class InitDB {
     private void initTestMember() {
         IntStream.range(0,20)
                         .forEach(i -> memberRepository.save(
-                                new Member("member"+i+"@"+"member"+i+".com", passwordEncoder.encode("123456!"),"member"+i,"MEMBER")));
-        IntStream.range(21,40)
-                .forEach(i -> memberRepository.save(
-                        new Member("member"+i+"@"+"member"+i+".com", passwordEncoder.encode("123456!"),"member"+i,"EXPERT")));
+                                new Member("member"+i+"@"+"member"+i+".com"
+                                        , passwordEncoder.encode("123456!"),
+                                        "member"+i
+                                        , "MEMBER")));
+
+        for (int i = 0; i < 20; i++) {
+            Member member = new Member("member"+i+"@member"+i+".com"
+                    , passwordEncoder.encode("123456!")
+                    ,"member"+i,"EXPERT");
+            memberRepository.save(member);
+        }
     }
 
     private void initCategory() {
@@ -91,7 +100,8 @@ public class InitDB {
 
         for(Category c : categoryList) {
             for(Member m : memberList) {
-                boardRepository.save(new Board("title","content",m,c,List.of()));
+                int rnd = new Random().nextInt(1000);
+                boardRepository.save(new Board("title" + rnd,"content" + rnd,m,c,List.of()));
             }
         }
 
