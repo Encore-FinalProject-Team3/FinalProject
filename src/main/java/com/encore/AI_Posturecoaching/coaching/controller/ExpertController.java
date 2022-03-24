@@ -1,6 +1,7 @@
 package com.encore.AI_Posturecoaching.coaching.controller;
 
 
+import com.encore.AI_Posturecoaching.coaching.Expert;
 import com.encore.AI_Posturecoaching.coaching.dto.ExpertRequestDto;
 import com.encore.AI_Posturecoaching.coaching.service.ExpertService;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
@@ -23,9 +24,11 @@ public class ExpertController {
     @ApiOperation(value = "강사 정보 조회", notes = "강사 정보를 조회한다.")
     @GetMapping("/api/expert/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Response read(@ApiParam(value = "강사 id", required = true) @PathVariable Long id) {
-        return Response.success(expertService.findOne(id));
+    public Expert read(@ApiParam(value = "강사 id", required = true) @PathVariable Long id) {
+        Expert expertDto = expertService.findOne(id);
+         return expertDto;
     }
+
 
     //강사 모두 출력 하기
     @ApiOperation(value = "강사 전체 목록 조회", notes = "강사 목록을 조회한다.")
@@ -34,6 +37,8 @@ public class ExpertController {
     public Response readAll() {
         return Response.success(expertService.findAll());
     }
+
+
 
     //강사 수정
     @ApiOperation(value = "강사 수정", notes = "강사 을 수정한다.")
@@ -53,4 +58,5 @@ public class ExpertController {
         expertService.delete(memberId, id);
         return Response.success();
     }
+
 }

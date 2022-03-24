@@ -16,18 +16,17 @@ public class ExpertDto {
 
     private Long expertMemberId;
 
-    private Member member;
-
     @Builder
     public ExpertDto (Long id, String expertName, String expertCareer, Long expertMemberId, Member member) {
         this.id = id;
         this.expertName = expertName;
         this.expertCareer = expertCareer;
         this.expertMemberId = expertMemberId;
-        this.member = member;
     }
 
     public ExpertDto(Expert expert) {
     }
 
+    public ExpertDto(ExpertDto e) {
+    }
 }

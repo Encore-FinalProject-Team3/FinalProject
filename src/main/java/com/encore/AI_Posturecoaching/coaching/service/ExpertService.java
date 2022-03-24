@@ -10,6 +10,7 @@ import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +62,6 @@ public class ExpertService {
             throw new RuntimeException("강사만 삭제할 수 있습니다");
         }
     }
-
 
 
 }
