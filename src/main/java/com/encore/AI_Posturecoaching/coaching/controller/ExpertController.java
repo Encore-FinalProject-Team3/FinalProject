@@ -1,7 +1,7 @@
 package com.encore.AI_Posturecoaching.coaching.controller;
 
 
-import com.encore.AI_Posturecoaching.coaching.Expert;
+import com.encore.AI_Posturecoaching.coaching.dto.ExpertDto;
 import com.encore.AI_Posturecoaching.coaching.dto.ExpertRequestDto;
 import com.encore.AI_Posturecoaching.coaching.service.ExpertService;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
@@ -20,12 +20,23 @@ public class ExpertController {
 
     private final ExpertService expertService;
 
+    //강사신청
+    @ApiOperation(value = "강사 신청 ", notes = "강사 신청 한다.")
+    @PostMapping("/api/expert/")
+    @ResponseStatus(HttpStatus.OK)
+    public Response create(
+            @Valid @ModelAttribute ExpertRequestDto expertRequestDto) {
+        expertService.create(expertRequestDto);
+        return Response.success();
+    }
+
+
     // 강사 조회
     @ApiOperation(value = "강사 정보 조회", notes = "강사 정보를 조회한다.")
     @GetMapping("/api/expert/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Expert read(@ApiParam(value = "강사 id", required = true) @PathVariable Long id) {
-        Expert expertDto = expertService.findOne(id);
+    public ExpertDto read(@ApiParam(value = "강사 id", required = true) @PathVariable Long id) {
+        ExpertDto expertDto = expertService.findOne(id);
          return expertDto;
     }
 
@@ -47,7 +58,8 @@ public class ExpertController {
     public Response update(
             @ApiParam(value = "강사 id", required = true) @PathVariable Long id,
             @Valid @ModelAttribute ExpertRequestDto expertRequestDto, @AuthenticationPrincipal String memberId) {
-        return Response.success(expertService.update(memberId, id, expertRequestDto));
+        expertService.update(memberId, id, expertRequestDto);
+        return Response.success();
     }
 
     //강사 탈퇴

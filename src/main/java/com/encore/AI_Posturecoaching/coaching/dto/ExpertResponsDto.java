@@ -32,8 +32,6 @@ public class ExpertResponsDto {
     public ExpertResponsDto(Long id, String expertName, String expertCareer, Long expertMemberId, Member member, List<Coaching> coachingList, String expertCareer1, String expertName1) {
     }
 
-    public ExpertResponsDto(Long id, String expertName, String expertCareer, Long expertMemberId, Member member, List<Coaching> coachingList, List<Coaching> coachingList1) {
-    }
 
     public static ExpertResponsDto ToDto(Expert expert) {
         return new ExpertResponsDto
@@ -46,20 +44,5 @@ public class ExpertResponsDto {
                         , expert.getExpertCareer()
                         , expert.getExpertName());
     }
-//
-//    public static ExpertResponsDto expertDTO(Expert expert, Coaching Coaching){
-//
-//        List<Coaching> coachings = new ArrayList<>();
-//        expert.getCoachingList().forEach(x -> coachings.add(Coaching));
-//        return  new  ExpertResponsDto(
-//                expert.getId(),
-//                expert.getExpertName(),
-//                expert.getExpertCareer(),
-//                expert.getExpertMemberId(),
-//                expert.getMember(),
-//                expert.getCoachingList(),
-//                coachings
-//        );
-//    }
 
 }

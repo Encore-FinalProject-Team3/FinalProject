@@ -54,9 +54,9 @@ public class InitDB {
                                         , "MEMBER")));
 
         for (int i = 0; i < 20; i++) {
-            Member member = new Member("member"+i+"@member"+i+".com"
+            Member member = new Member("member11"+i+"@member11"+i+".com"
                     , passwordEncoder.encode("123456!")
-                    ,"member"+i,"EXPERT");
+                    ,"member11"+i,"EXPERT");
             memberRepository.save(member);
         }
     }
