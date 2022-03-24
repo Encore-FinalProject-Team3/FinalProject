@@ -1,8 +1,8 @@
-package com.encore.AI_Posturecoaching.coaching.controller;
+package com.encore.AI_Posturecoaching.expert.controller;
 
 
-import com.encore.AI_Posturecoaching.coaching.dto.ExpertRequestDto;
-import com.encore.AI_Posturecoaching.coaching.service.ExpertService;
+import com.encore.AI_Posturecoaching.expert.dto.ExpertRequestDto;
+import com.encore.AI_Posturecoaching.expert.service.ExpertService;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

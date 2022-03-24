@@ -1,9 +1,9 @@
-package com.encore.AI_Posturecoaching.coaching.service;
+package com.encore.AI_Posturecoaching.expert.service;
 
 
-import com.encore.AI_Posturecoaching.coaching.Expert;
-import com.encore.AI_Posturecoaching.coaching.dto.ExpertRequestDto;
-import com.encore.AI_Posturecoaching.coaching.repository.ExpertRepository;
+import com.encore.AI_Posturecoaching.expert.Expert;
+import com.encore.AI_Posturecoaching.expert.dto.ExpertRequestDto;
+import com.encore.AI_Posturecoaching.expert.repository.ExpertRepository;
 import com.encore.AI_Posturecoaching.exception.MemberNotFoundException;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;

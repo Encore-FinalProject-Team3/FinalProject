@@ -1,7 +1,8 @@
-package com.encore.AI_Posturecoaching.coaching;
+package com.encore.AI_Posturecoaching.expert;
 
 
 
+import com.encore.AI_Posturecoaching.coaching.Coaching;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -16,8 +17,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Expert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +27,11 @@ public class Expert {
     private Long id;
 
     //강사이름
-    @Column(nullable = false,length = 45)
+    @Column(name = "expert_name", nullable = false,length = 45)
     private String expertName;
 
     //경력
-    @Column(nullable = false,length = 200)
+    @Column(name = "expert_career", nullable = false,length = 200)
     private String expertCareer;
 
     //일반 유저 조인
