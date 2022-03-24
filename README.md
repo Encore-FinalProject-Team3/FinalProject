@@ -52,7 +52,10 @@
         src="http://img.shields.io/badge/-choco_jaeny-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-* Jaekyun <a href="https://www.instagram.com/xi_kyun/?hl=ko">
+* 
+<img 
+          src="https://img.shields.io/badge/Jaekyun-BE,DB-blue"/>
+          <a href="https://www.instagram.com/xi_kyun/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-xi_kyun-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
@@ -68,5 +71,3 @@
 ### :smile: Encore 16th :wink:
 -----------------------------
 
-<img 
-          src="https://img.shields.io/badge/Instagram-jaekyun-blue"/>
