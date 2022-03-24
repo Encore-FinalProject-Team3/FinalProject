@@ -32,22 +32,30 @@
 
 ### :two_men_holding_hands: Team 3: 
 
-* Yaryung <a href="https://www.instagram.com/difud1106/?hl=ko">
+* <img 
+          src="https://img.shields.io/badge/Yaryung-BE,DBA-blue"/>
+          <a href="https://www.instagram.com/difud1106/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-difud1106-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-* Yonggi<a href="https://www.instagram.com/raehyeon._.a/?hl=ko">
+*  <img 
+          src="https://img.shields.io/badge/Jaeyeon-PM, BE ,DB-blue"/>
+          <a href="https://www.instagram.com/raehyeon._.a/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-raehyeon._.a-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-* Raehyeon  <a href="https://www.instagram.com/raehyeon._.a/?hl=ko">
+*  <img 
+          src="https://img.shields.io/badge/Raehyeon-BE,DB-blue"/>
+          <a href="https://www.instagram.com/raehyeon._.a/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-raehyeon._.a-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-* Jaeyeon <a href="https://www.instagram.com/choco_jaeny/?hl=ko">
+* <img 
+          src="https://img.shields.io/badge/Jaeyeon-FE,DB-blue"/>
+          <a href="https://www.instagram.com/choco_jaeny/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-choco_jaeny-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
@@ -59,7 +67,8 @@
         src="http://img.shields.io/badge/-xi_kyun-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
 </a><br />
-* Yeji <a href="https://www.instagram.com/yeji6_5/?hl=ko">
+* Yeji <img 
+          src="https://img.shields.io/badge/Yeji-BE,DB-green"/> <a href="https://www.instagram.com/yeji6_5/?hl=ko">
     <img 
         src="http://img.shields.io/badge/-yeji6_5-white?style=flat&logo=Instagram&link=https://instagram.com/alpox.dev/"
         style="height : auto; margin-left : 10px; margin-right : 10px;"/>
