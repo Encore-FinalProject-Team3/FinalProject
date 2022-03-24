@@ -5,6 +5,7 @@ import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
 import com.encore.AI_Posturecoaching.coaching.Expert;
+import com.encore.AI_Posturecoaching.coaching.repository.ExpertRepository;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class InitDB {
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryRepository;
     private final BoardRepository boardRepository;
+    private final ExpertRepository expertRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
@@ -48,16 +50,18 @@ public class InitDB {
     private void initTestMember() {
         IntStream.range(0,20)
                         .forEach(i -> memberRepository.save(
-                                new Member("member"+i+"@"+"member"+i+".com"
+                                new Member("member"+i+"@"+"member.com"
                                         , passwordEncoder.encode("123456!"),
                                         "member"+i
                                         , "MEMBER")));
-
-        for (int i = 0; i < 20; i++) {
-            Member member = new Member("member"+i+"@member"+i+".com"
+        for (int i = 21; i < 40; i++) {
+            Member member = new Member("member"+i+"@member.com"
                     , passwordEncoder.encode("123456!")
                     ,"member"+i,"EXPERT");
             memberRepository.save(member);
+            int rnd = new Random().nextInt(1000);
+            Expert expert = new Expert(Long.valueOf(i+1),"용키"+rnd,"경력"+rnd,member);
+            expertRepository.save(expert);
         }
     }
 
@@ -91,7 +95,6 @@ public class InitDB {
         Category c27 = categoryRepository.save(new Category("팝니다", c10));
         Category c28 = categoryRepository.save(new Category("질문", c11));
         Category c29 = categoryRepository.save(new Category("답변", c11));
-
     }
 
     private void initBoard() {
@@ -104,20 +107,6 @@ public class InitDB {
                 boardRepository.save(new Board("title" + rnd,"content" + rnd,m,c,List.of()));
             }
         }
-
-
-//        Member member1 = memberRepository.findAll().get(0);
-//        Category category1 = categoryRepository.findAll().get(0);
-//        IntStream.range(0, 10)
-//                .forEach(i -> boardRepository.save(
-//                        new Board("title" + i, "content" + i, member1, category1, List.of())
-//                ));
-//        Member member2 = memberRepository.findAll().get(1);
-//        Category category2 = categoryRepository.findAll().get(1);
-//        IntStream.range(0, 10)
-//                .forEach(i -> boardRepository.save(
-//                        new Board("title" + i, "content" + i, member2, category2, List.of())
-//                ));
-
     }
+
 }

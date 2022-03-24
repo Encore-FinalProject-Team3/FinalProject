@@ -2,10 +2,7 @@ package com.encore.AI_Posturecoaching.board.controller;
 
 
 import com.encore.AI_Posturecoaching.board.Board;
-import com.encore.AI_Posturecoaching.board.dto.BoardCreateRequestDto;
-import com.encore.AI_Posturecoaching.board.dto.BoardReadCondition;
-import com.encore.AI_Posturecoaching.board.dto.BoardUpdateRequestDto;
-import com.encore.AI_Posturecoaching.board.dto.BoardUpdateResponseDto;
+import com.encore.AI_Posturecoaching.board.dto.*;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.board.service.BoardService;
 import com.encore.AI_Posturecoaching.exception.PostNotFoundException;
@@ -79,9 +76,18 @@ public class BoardController {
     @DeleteMapping("/api/board/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Response delete(@ApiParam(value = "게시글 id", required = true) @PathVariable Long id, @AuthenticationPrincipal String memeberId) {
+        System.out.println(memeberId);
         boardService.delete(memeberId, id);
         return Response.success();
     }
+
+
+    // 멤버별 작성글 가져오기
+    @GetMapping("/api/board/member/{id}")
+    public Response readAllByMemberId(@ApiParam(value = "멤버 id",required = true) @PathVariable Long id) {
+        return Response.success(boardService.readAllByMemberId(id));
+    }
+
 
 
 }

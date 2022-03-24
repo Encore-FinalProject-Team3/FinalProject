@@ -37,19 +37,29 @@ public class BoardService {
 
 
     // 게시글 전체 조회
+    @Transactional
     public List<BoardDto> readAll() {
         List<BoardDto> boardList = boardRepository.findAll().stream().map(b -> BoardDto.toDto(b)).collect(toList());
         return boardList;
     }
 
     // 게시글 조회
+    @Transactional
     public BoardDto read(Long id) {
         return BoardDto.toDto(boardRepository.findById(id).orElseThrow(PostNotFoundException::new));
     }
 
     // 카테고리별 게시글 조회
+    @Transactional
     public List<BoardDto> readAllByCategoryId(Long id){
         List<BoardDto> boardList = boardRepository.findAllByCategoryId(id).stream().map(b -> BoardDto.toDto(b)).collect(toList());
+        return boardList;
+    }
+
+    // 멤버별 작성 게시글 전체 조회
+    @Transactional
+    public List<BoardDto> readAllByMemberId(Long id) {
+        List <BoardDto> boardList = boardRepository.findAllByMemberId(id).stream().map(b -> BoardDto.toDto(b)).collect(toList());
         return boardList;
     }
 
@@ -67,6 +77,8 @@ public class BoardService {
 
     @Transactional
     public void delete(String memberId, Long id) {
+        System.out.println(memberId + "," + id);
+        System.out.println(Long.valueOf(memberId));
 
         Member member = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(MemberNotFoundException::new);
         Board board = boardRepository.findById(id).orElseThrow(PostNotFoundException::new);

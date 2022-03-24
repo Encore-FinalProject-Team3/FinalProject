@@ -5,14 +5,17 @@ import com.encore.AI_Posturecoaching.board.dto.*;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
+import com.encore.AI_Posturecoaching.factory.dto.SignUpRequestFactory;
 import com.encore.AI_Posturecoaching.file.service.FileService;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
+import com.encore.AI_Posturecoaching.sign.service.SignService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
 import java.util.Optional;
@@ -36,6 +39,8 @@ class BoardServiceTest {
 
     @InjectMocks
     BoardService boardService;
+
+    SignService signService;
 
     @Mock
     BoardCreateRequestDto boardCreateRequestDto;
@@ -85,6 +90,7 @@ class BoardServiceTest {
 
         // when
         BoardDto boardDto = boardService.read(1L);
+        System.out.println(boardDto.getTitle());
 
         // then
         assertThat(boardDto.getTitle()).isEqualTo(board.getTitle());
@@ -119,7 +125,11 @@ class BoardServiceTest {
         Board board = createBoardWithId(3L);
         Board board1 = deleteBoard(member,category,board);
 
-        given(boardRepository.findById(3L)).willReturn(Optional.of(board1));
+        boardRepository.save(board1);
+        memberRepository.save(member);
+        System.out.println(memberRepository.findByEmail(member.getEmail()));
+
+        given(boardRepository.findById(3L)).willReturn(Optional.of(board));
         // when
         boardService.delete("3",3L);
 

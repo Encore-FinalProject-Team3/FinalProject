@@ -39,6 +39,7 @@ public class SignService {
 
     @Transactional
     public SignInResponseDto signIn(SignUpRequestDto signUpRequestDto){
+        System.out.println(signUpRequestDto.getEmail());
         Member member = memberRepository.findByEmail(signUpRequestDto.getEmail()).orElseThrow(LoginFailureException::new);;
         if(!passwordEncoder.matches(signUpRequestDto.getPassword(), member.getPassword())) {
             throw new LoginFailureException();
