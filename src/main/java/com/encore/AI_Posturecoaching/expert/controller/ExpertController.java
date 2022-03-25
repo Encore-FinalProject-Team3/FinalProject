@@ -45,7 +45,7 @@ public class ExpertController {
         return Response.success(expertService.update(memberId, id, expertRequestDto));
     }
 
-    //강사 탈퇴
+    // 강사 탈퇴
     @ApiOperation(value = "사용자 정보 삭제", notes = "사용자 정보를 삭제한다.")
     @DeleteMapping("/api/expert/{id}")
     @ResponseStatus(HttpStatus.OK)

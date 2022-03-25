@@ -25,9 +25,9 @@ public class BoardDto {
     private List<ImageDto> images;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
-    private Timestamp modifiedAt;
+    private LocalDateTime modifiedAt;
 
     public static BoardDto toDto(Board board) {
         return new BoardDto(

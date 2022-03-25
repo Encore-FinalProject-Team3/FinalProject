@@ -63,4 +63,10 @@ public class Coaching {
     @JoinColumn(name="file_id")
     private File file;
 
+//    public Coaching(String title,String content,Member member,Expert expert){
+//        this.title = title,
+//        this.content = content,
+//        this.member = member;
+//        this.expert = expert;
+//    }
 }

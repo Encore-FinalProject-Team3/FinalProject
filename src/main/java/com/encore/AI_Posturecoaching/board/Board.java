@@ -4,6 +4,7 @@ package com.encore.AI_Posturecoaching.board;
 import com.encore.AI_Posturecoaching.board.dto.BoardUpdateRequestDto;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.member.Member;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import static java.util.stream.Collectors.toList;
 
@@ -41,10 +43,12 @@ public class Board {
     private String content;
 
     @CreatedDate
-    private Timestamp createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private Timestamp modifiedAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private LocalDateTime modifiedAt;
 
     @Column(name = "board_hit")
     private int hit;
@@ -68,6 +72,8 @@ public class Board {
         this.member = member;
         this.category = category;
         this.images = new ArrayList<>();
+        this.createdAt = LocalDateTime.now();
+        this.hit = new Random().nextInt(1000);
         addImages(images);
     }
 
