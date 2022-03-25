@@ -4,6 +4,8 @@ import com.encore.AI_Posturecoaching.board.Board;
 import com.encore.AI_Posturecoaching.board.repository.BoardRepository;
 import com.encore.AI_Posturecoaching.category.Category;
 import com.encore.AI_Posturecoaching.category.repository.CategoryRepository;
+import com.encore.AI_Posturecoaching.coaching.Coaching;
+import com.encore.AI_Posturecoaching.coaching.repository.CoachingRepository;
 import com.encore.AI_Posturecoaching.expert.Expert;
 import com.encore.AI_Posturecoaching.expert.repository.ExpertRepository;
 import com.encore.AI_Posturecoaching.member.Member;
@@ -16,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -30,6 +33,7 @@ public class InitDB {
     private final CategoryRepository categoryRepository;
     private final BoardRepository boardRepository;
     private final ExpertRepository expertRepository;
+    private final CoachingRepository coachingRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
@@ -73,7 +77,7 @@ public class InitDB {
         Category c4 = categoryRepository.save(new Category("농구", null));
         Category c5 = categoryRepository.save(new Category("축구", null));
         Category c6 = categoryRepository.save(new Category("야구", null));
-        Category c7 = categoryRepository.save(new Category("스퀴시", null));
+        Category c7 = categoryRepository.save(new Category("스쿼시", null));
         Category c8 = categoryRepository.save(new Category("중고거래", c1));
         Category c9 = categoryRepository.save(new Category("Q&A", c1));
         Category c10 = categoryRepository.save(new Category("중고거래", c2));
@@ -105,24 +109,30 @@ public class InitDB {
 
         for(Category c : categoryList) {
             for(Member m : memberList) {
-                int rnd = new Random().nextInt(1000);
-                boardRepository.save(new Board("title" + rnd,"content" + rnd,m,c,List.of()));
+                int rnd = new Random().nextInt(9);
+                List<String> titleList = new ArrayList<>();
+                titleList.add("윌슨 롤랑가로스 트라이엄프 273g/105sq 사진");
+                titleList.add("판매완료)2022스피드팀 285 사진");
+                titleList.add("토요일 3월 26일 오전7시~10시 GTA(구테아) 테린이 모집");
+                titleList.add("테니스화에 사제 깔창(테린이 질문)");
+                titleList.add("늦은가입인사입니다^^");
+                titleList.add("가입인사 드립니다!");
+                titleList.add("[Q 과 A] 테니스화 질문드립니다. [4] new");
+                titleList.add("테니스화 문의(아디다스 디파이언트 제너레이션)");
+                titleList.add("쿠션 좋고 발볼 넓은 테니스화~ [14]");
+
+                boardRepository.save(new Board(titleList.get(rnd), titleList.get(rnd),m,c,List.of()));
             }
         }
+    }
 
+    private void initCoaching() {
+        Member member = memberRepository.findAll().get(0);
+        Expert expert = expertRepository.findAll().get(0);
+//        coachingRepository.save(new Coaching("title"))
 
-//        Member member1 = memberRepository.findAll().get(0);
-//        Category category1 = categoryRepository.findAll().get(0);
-//        IntStream.range(0, 10)
-//                .forEach(i -> boardRepository.save(
-//                        new Board("title" + i, "content" + i, member1, category1, List.of())
-//                ));
-//        Member member2 = memberRepository.findAll().get(1);
-//        Category category2 = categoryRepository.findAll().get(1);
-//        IntStream.range(0, 10)
-//                .forEach(i -> boardRepository.save(
-//                        new Board("title" + i, "content" + i, member2, category2, List.of())
-//                ));
 
     }
+
+
 }

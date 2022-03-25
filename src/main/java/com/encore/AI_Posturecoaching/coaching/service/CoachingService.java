@@ -56,7 +56,7 @@ public class CoachingService {
         return new CoachingResponsDto(useMember.getId());
     }
 
-    //코칭 신청
+    // 코칭 신청
     @Transactional
     public void create(CoachingRequestDto coachingRequestDto) {
 //        Member member = memberRepository.findById(Long.valueOf(memberId)).orElseThrow(CoachingNotFoundException::new);
