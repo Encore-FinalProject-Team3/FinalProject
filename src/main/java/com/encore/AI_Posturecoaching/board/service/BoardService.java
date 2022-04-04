@@ -62,7 +62,7 @@ public class BoardService {
 
     @Transactional
     public BoardCreateResponseDto create(BoardCreateRequestDto boardCreateRequestDto){
-        Member member =memberRepository.findById(boardCreateRequestDto.getMemberId()).orElseThrow(MemberNotFoundException::new);
+        Member member = memberRepository.findById(boardCreateRequestDto.getMemberId()).orElseThrow(MemberNotFoundException::new);
         Category category = categoryRepository.findById(boardCreateRequestDto.getCategoryId()).orElseThrow(CategoryNotFoundException::new);
         List<Image> images = boardCreateRequestDto.getImages().stream().map(i -> new Image(i.getOriginalFilename())).collect(toList());
         Board board = boardRepository.save(

@@ -3,6 +3,7 @@ package com.encore.AI_Posturecoaching.sign.service;
 import com.encore.AI_Posturecoaching.config.jwt.TokenProvider;
 import com.encore.AI_Posturecoaching.exception.LoginFailureException;
 import com.encore.AI_Posturecoaching.member.Member;
+import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
 import com.encore.AI_Posturecoaching.sign.dto.SignInResponseDto;
 import com.encore.AI_Posturecoaching.sign.dto.SignUpRequestDto;
 import com.encore.AI_Posturecoaching.sign.repository.SignRepository;
@@ -18,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class SignService {
 
-    private final SignRepository memberRepository;
+    private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
 

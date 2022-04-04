@@ -4,6 +4,8 @@ package com.encore.AI_Posturecoaching.message;
 import com.encore.AI_Posturecoaching.member.Member;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -15,33 +17,45 @@ import java.sql.Timestamp;
 @Entity
 public class Message {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long messageIdx;
-    //보내는사람
-    @Column(nullable = false)
-    private  int messageSender;
-    //받는사람
-    @Column(nullable = false)
-    private int messageReceiver;
-    //제목
-    @Column(nullable = false,length = 100)
-    private  String messageTitle;
-    //내용
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = false)
     @Lob
-    private  String messageContent;
-    //보낸시간
-    @CreationTimestamp
-    private  Timestamp messageSendTime;
-    //확인시간
-    @CreationTimestamp
-    private Timestamp messageReceiveTime;
-    //확인여부
-    @Column
-    private String messageReceiveCheck;
-    //일반유저 조인
+    private String content;
+
+    @Column(nullable = false)
+    private boolean deletedBySender;
+
+    @Column(nullable = false)
+    private boolean deletedByReceiver;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberIdx")
-    private Member member;
+    @JoinColumn(name = "sender_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Member sender;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "receiver_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Member receiver;
+
+    public Message(String content, Member sender, Member receiver) {
+        this.content = content;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.deletedBySender = this.deletedByReceiver = false;
+    }
+
+    public void deleteBySender() {
+        this.deletedBySender = true;
+    }
+
+    public void deleteByReceiver() {
+        this.deletedByReceiver = true;
+    }
+
+    public boolean isDeletable() {
+        return isDeletedBySender() && isDeletedByReceiver();
+    }
 }

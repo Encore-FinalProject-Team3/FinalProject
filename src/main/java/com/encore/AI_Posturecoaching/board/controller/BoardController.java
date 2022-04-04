@@ -57,7 +57,9 @@ public class BoardController {
     }
 
     // 멤버별 작성글 가져오기
+    @ApiOperation(value = "멤버별 게시글 조회", notes = "멤버별 게시글을 조회한다.")
     @GetMapping("/api/board/member/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Response readAllByMemberId(@ApiParam(value = "멤버 id",required = true) @PathVariable Long id) {
         return Response.success(boardService.readAllByMemberId(id));
     }
@@ -67,8 +69,8 @@ public class BoardController {
     @PostMapping("/api/board")
     @ResponseStatus(HttpStatus.CREATED)
 //    @AssignMemberId
-    public Response create(@Valid @ModelAttribute BoardCreateRequestDto req) {
-        return Response.success(boardService.create(req));
+    public Response create(@Valid @ModelAttribute BoardCreateRequestDto boardCreateRequestDto) {
+        return Response.success(boardService.create(boardCreateRequestDto));
     }
 
     @ApiOperation(value = "게시글 수정", notes = "게시글을 수정한다.")
