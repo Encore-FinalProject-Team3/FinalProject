@@ -31,9 +31,9 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.willReturn;
 import static org.mockito.Mockito.verify;
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
 class BoardServiceTest {
-
+/*
     @InjectMocks
     BoardService boardService;
 
@@ -61,7 +61,7 @@ class BoardServiceTest {
 
 
 
-    /*@Test
+    *//*@Test
     void readAll() {
         //given
         given(boardRepository.findAllByCondition(any())).willReturn(Page.empty());
@@ -72,7 +72,7 @@ class BoardServiceTest {
         //then
         assertThat(boardListDto.getPostList().size()).isZero(); //실제 값이 0인지 확인
 
-    }*/
+    }*//*
 
 
     @Test
@@ -92,7 +92,7 @@ class BoardServiceTest {
 
     }
 
-   /*@Test
+   *//*@Test
     void create(){
         // given
         Member member = new Member("aaa@aaa","1111","222","admin");
@@ -105,7 +105,7 @@ class BoardServiceTest {
 
         // then
         verify(boardRepository).save(any());
-    }*/
+    }*//*
 
 
 
@@ -128,7 +128,7 @@ class BoardServiceTest {
         verify(boardRepository).delete(any());
     }
 
-   /* @Test
+   *//* @Test
     void update() {
        //given
        BoardUpdateRequestDto burDto = updateRequest("");
