@@ -27,6 +27,12 @@ public class SignController {
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
+    // test home
+    @GetMapping
+    public String home(){
+        return "hello world";
+    }
+
     // 회원가입
     @ApiOperation(value = "회원가입", notes = "회원가입을 한다.")
     @PostMapping("/api/signup")
