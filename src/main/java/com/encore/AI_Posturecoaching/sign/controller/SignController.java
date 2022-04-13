@@ -30,7 +30,7 @@ public class SignController {
     // test home
     @GetMapping
     public String home(){
-        return "hello world1";
+        return "hello world2";
     }
 
     // 회원가입
