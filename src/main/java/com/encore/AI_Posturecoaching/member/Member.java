@@ -23,13 +23,13 @@ public class Member {
     @Column(name = "member_id")
     private Long id; // 유저에게 고유하게 부여되는 id.
 
-    @Column(nullable = false , name = "member_email")
+    @Column(nullable = false ,unique = true, name = "member_email")
     private String email;   // 아이디와 동일한 역할
 
     @Column(nullable = false , name="member_password")
     private String password;   // 비밀번호 , 암호화
 
-    @Column(nullable = false ,name="member_name")
+    @Column(nullable = false ,unique = true, name="member_name")
     private String memberName;
 
     @Column(name="member_brith")

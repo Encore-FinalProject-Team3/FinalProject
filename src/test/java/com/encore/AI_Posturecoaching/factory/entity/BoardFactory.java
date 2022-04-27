@@ -13,7 +13,6 @@ import java.util.List;
 import static com.encore.AI_Posturecoaching.category.CategoryFactory.createCategory;
 import static com.encore.AI_Posturecoaching.factory.entity.CategoryFactory.createCategoryWithId;
 import static com.encore.AI_Posturecoaching.factory.entity.MemberFactory.createMember;
-import static com.encore.AI_Posturecoaching.factory.entity.MemberFactory.createMemberWithId;
 
 
 public class BoardFactory {
@@ -32,12 +31,12 @@ public class BoardFactory {
     public static Board createBoardWithContent(String content) {
         return new Board("title", "content", createMember(), createCategory(),List.of());
     }
-    public static Board createBoardWithId(Long Id) {
+    /*public static Board createBoardWithId(Long Id) {
         Board board = new Board("title", "content", createMemberWithId(3L), createCategoryWithId(3L),List.of());
         ReflectionTestUtils.setField(board, "id", 3L);
         return board;
 
-    }
+    }*/
 
     public static BoardUpdateRequestDto updateRequest(String test) {
         BoardUpdateRequestDto board = new BoardUpdateRequestDto("title", "content",null,null);

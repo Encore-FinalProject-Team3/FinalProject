@@ -9,17 +9,12 @@ import static java.util.Collections.emptyList;
 
 public class MemberFactory {
     public static Member createMember() {
-        return new Member("email@email.com", "1234", "username", "ADMIN");
+        return new Member("email1@email.com", "password1", "username1", "MEMBER");
+    }
+    public static Member createMember(String email,String password,String memberName, String role)
+    {
+        return new Member(email,password,memberName,role);
     }
 
-    public static Member createMember2() {
-        return new Member("email@email.com", "1234", "username", "MEMBER");
-    }
-
-    public static Member createMemberWithId(Long id) {
-        Member member = new Member("email@email.com", "123456a!", "username", "nickname");
-        ReflectionTestUtils.setField(member, "id", id);
-        return member;
-    }
 
 }

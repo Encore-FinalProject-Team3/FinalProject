@@ -13,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static com.encore.AI_Posturecoaching.factory.entity.MemberFactory.createMember;
-import static com.encore.AI_Posturecoaching.factory.entity.MemberFactory.createMember2;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +30,7 @@ class MemberServiceTest {
     MemberRepository memberRepository;
 
     @Test
-    void findOne() {
+    void findOneTest() {
         //given
         Member member = createMember();
         given(memberRepository.findById(anyLong())).willReturn(Optional.of(member));
@@ -44,27 +43,15 @@ class MemberServiceTest {
 
     }
 
-    @Test //admin일 경우
-    void delete() {
+    //admin일 경우
+    void deleteTest() {
         //given
-        given(memberRepository.findById(anyLong())).willReturn(Optional.of(createMember()));
+        given(memberRepository.existsById(anyLong())).willReturn(true);
         //when
         memberService.delete("1",1L);
         //then
-        verify(memberRepository).delete(any());
+        verify(memberRepository).deleteById(anyLong());
     }
 
-    @Test //admin이 아닐 경우
-    void delete2() {
-        //given
-        given(memberRepository.findById(anyLong())).willReturn(Optional.of(createMember2()));
-        //when
 
-        Exception e = assertThrows(Exception.class,
-                () -> memberService.delete("1",1L));//예외가 발생해야 한다.
-        System.out.println(e.getMessage());
-
-        //then
-        Assertions.assertThat(e.getMessage()).isEqualTo("관리자만 삭제할 수 있습니다");
-    }
 }
