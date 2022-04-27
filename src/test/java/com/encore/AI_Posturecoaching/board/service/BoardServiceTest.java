@@ -23,7 +23,6 @@ import static com.encore.AI_Posturecoaching.factory.dto.BoardReadConditionFactor
 
 import static com.encore.AI_Posturecoaching.factory.entity.BoardFactory.*;
 import static com.encore.AI_Posturecoaching.factory.entity.CategoryFactory.createCategoryWithId;
-import static com.encore.AI_Posturecoaching.factory.entity.MemberFactory.createMemberWithId;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;

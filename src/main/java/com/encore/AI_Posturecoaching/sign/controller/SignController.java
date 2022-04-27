@@ -1,5 +1,6 @@
 package com.encore.AI_Posturecoaching.sign.controller;
 import com.encore.AI_Posturecoaching.config.jwt.TokenProvider;
+import com.encore.AI_Posturecoaching.sign.dto.SignInRequestDto;
 import com.encore.AI_Posturecoaching.sign.dto.SignUpRequestDto;
 import com.encore.AI_Posturecoaching.member.dto.response.Response;
 import com.encore.AI_Posturecoaching.sign.service.SignService;
@@ -45,8 +46,8 @@ public class SignController {
     @ApiOperation(value = "로그인", notes = "로그인을 한다.")
     @PostMapping("/api/signin")
     @ResponseStatus(HttpStatus.OK)
-    public Response authenticate(@RequestBody SignUpRequestDto signUpRequestDto) {
-        return success(signService.signIn(signUpRequestDto));
+    public Response authenticate(@RequestBody SignInRequestDto signInRequestDto) {
+        return success(signService.signIn(signInRequestDto));
     }
 
     // 이메일 체크

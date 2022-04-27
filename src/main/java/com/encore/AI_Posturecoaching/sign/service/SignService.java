@@ -2,8 +2,11 @@ package com.encore.AI_Posturecoaching.sign.service;
 
 import com.encore.AI_Posturecoaching.config.jwt.TokenProvider;
 import com.encore.AI_Posturecoaching.exception.LoginFailureException;
+import com.encore.AI_Posturecoaching.exception.MemberEmailAlreadyExistsException;
+import com.encore.AI_Posturecoaching.exception.MemberMemberNameAlreadyExistsException;
 import com.encore.AI_Posturecoaching.member.Member;
 import com.encore.AI_Posturecoaching.member.repository.MemberRepository;
+import com.encore.AI_Posturecoaching.sign.dto.SignInRequestDto;
 import com.encore.AI_Posturecoaching.sign.dto.SignInResponseDto;
 import com.encore.AI_Posturecoaching.sign.dto.SignUpRequestDto;
 import com.encore.AI_Posturecoaching.sign.repository.SignRepository;
@@ -29,7 +32,10 @@ public class SignService {
             throw new RuntimeException("허가되지 않은 값이 들어왔습니다.");
         }
         if(memberRepository.existsByEmail(signUpRequestDto.getEmail())) {
-            throw new RuntimeException("이메일이 이미 존재합니다.");
+            throw new MemberEmailAlreadyExistsException();
+        }
+        if(memberRepository.existsByMemberName(signUpRequestDto.getMemberName())) {
+            throw new MemberMemberNameAlreadyExistsException();
         }
         String encodedPassword = passwordEncoder.encode(signUpRequestDto.getPassword());
         String role = "MEMBER";
@@ -39,9 +45,9 @@ public class SignService {
     }
 
     @Transactional
-    public SignInResponseDto signIn(SignUpRequestDto signUpRequestDto){
-        Member member = memberRepository.findByEmail(signUpRequestDto.getEmail()).orElseThrow(LoginFailureException::new);;
-        if(!passwordEncoder.matches(signUpRequestDto.getPassword(), member.getPassword())) {
+    public SignInResponseDto signIn(SignInRequestDto signInRequestDto){
+        Member member = memberRepository.findByEmail(signInRequestDto.getEmail()).orElseThrow(LoginFailureException::new);;
+        if(!passwordEncoder.matches(signInRequestDto.getPassword(), member.getPassword())) {
             throw new LoginFailureException();
         }
         // 토큰 생성
