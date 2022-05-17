@@ -30,7 +30,7 @@ class CategoryServiceTest {
     CategoryRepository categoryRepository;
 
     @Test
-    void readAll() {
+    void readAllTest() {
         // given
         given(categoryRepository.findAllOrderByParentIdAscNullsFirstCategoryIdAsc())
                 .willReturn(
@@ -49,7 +49,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    void create() {
+    void createTest() {
         CategoryCreateRequest req = createCategoryCreateRequest();
 
         // when
@@ -60,7 +60,7 @@ class CategoryServiceTest {
     }
 
     @Test
-    void delete() {
+    void deleteTest() {
         // given
         given(categoryRepository.findById(anyLong())).willReturn(Optional.of(createCategory()));
 
