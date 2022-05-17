@@ -26,8 +26,7 @@ class MemberServiceTest {
 
     @InjectMocks
     MemberService memberService;
-    @Mock
-    MemberRepository memberRepository;
+    @Mock MemberRepository memberRepository;
 
     @Test
     void findOneTest() {
@@ -43,10 +42,12 @@ class MemberServiceTest {
 
     }
 
-    //admin일 경우
+//    @Test //admin일 경우
     void deleteTest() {
         //given
+        Member member = createMember();
         given(memberRepository.existsById(anyLong())).willReturn(true);
+
         //when
         memberService.delete("1",1L);
         //then
